@@ -1,0 +1,4 @@
+import Link from 'next/link';
+import Image from 'next/image';
+import ui from '@/components/ui.module.css';
+export default function Today(){return <div className={ui.page}><div className={ui.intro}><p className={ui.eyebrow}>A LITTLE NOTE FOR TODAY</p><h1>오늘의 작은 응원</h1><p className={ui.description}>잠시 숨을 고르고, 내 마음을 살펴봐요.</p></div><div className={ui.notice}>매일 달라지는 실제 운세가 아닌 고정된 개발용 샘플이에요. 출생정보와 오늘 날짜를 계산에 사용하지 않아요.</div><section className={`${ui.paper} ${ui.center}`}><Image src="/images/woonmong-cutout.png" alt="응원을 건네는 운몽이" width={1293} height={1217} sizes="170px" className={ui.character}/><span className={ui.badge}>오늘의 마음 연습</span><h2>작은 시작도<br/>충분히 빛나요</h2><p>미뤄둔 일을 모두 끝내려 하지 않아도 괜찮아요. 가장 가벼운 한 가지를 골라 5분만 해볼까요?</p><p className={ui.muted}>잘 해내는 것보다 시작해 본 나를<br/>먼저 다정하게 응원해 주세요.</p></section><Link href="/reading/new" className={ui.primary}>내 운명록 샘플도 만나보기</Link></div>}
