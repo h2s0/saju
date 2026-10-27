@@ -7,7 +7,7 @@
 1. `README.md`
 2. `docs/00-product-brief.md`
 3. [ARCHITECTURE.md](ARCHITECTURE.md)와 [COMMIT_CONVENTION.md](COMMIT_CONVENTION.md)
-4. UI/디자인 작업은 루트 [DESIGN.md](DESIGN.md), 이후 변경 대상과 관련된 문서 (`docs/01-...` ~ `docs/10-...`)
+4. UI/디자인 작업은 루트 [DESIGN.md](DESIGN.md), 이후 변경 대상과 관련된 문서 (`docs/01-...` ~ `docs/12-...`)
 5. **캐릭터 생성·화면에 운몽이 사용 시** `docs/04-character-bible.md`와 그 문서가 지정한 원본·누끼·3면도 참조 이미지 및 검수 상태
 
 ## 2. 제품 불변 조건
@@ -48,7 +48,7 @@
 
 ## 5. 구현 원칙
 
-- 웹 프레임워크는 Next.js 사용 확정. App Router + TypeScript를 구현 기준으로 제안하며 백엔드 상세 선택은 `docs/07-technical-architecture.md`에서 확정/제안을 구분한다.
+- 웹 프레임워크는 Next.js App Router + TypeScript, 스타일은 CSS Modules/CSS 변수로 확정·구현했다. 백엔드 상세 선택은 `docs/07-technical-architecture.md`에서 확정/제안을 구분한다.
 - 결제 금액과 구매 권한은 서버가 결정한다. 클라이언트 파라미터는 신뢰하지 않는다.
 - 구매 후 리포트는 (user/profile/product/period/version) 키 기준 중복 생성·중복 결제 방어.
 - 분석 결과는 **달력/명식 산출부**와 **LLM 또는 템플릿 설명부**를 분리하고 입력·출력 스키마를 버전 관리.
@@ -82,6 +82,10 @@ Next.js 작업은 공식 라우팅 파일 규약을 지키고 Server Component�
 - 하나의 목적을 완결하는 구현·테스트·관련 문서는 함께 묶고 무관한 정리는 분리한다. 파일 수를 기준으로 억지 분할하지 않는다.
 - 개발 중 작은 목적 단위가 완성되고 관련 검증이 통과하면 다음 독립 작업 전에 로컬 중간 커밋한다. 변경을 작업 끝까지 쌓아두지 않으며, 승인된 작업 범위의 중간 커밋은 매번 확인을 요청하지 않는다. 명시적인 커밋 금지 지시는 우선한다.
 - 커밋 전 staged diff·검증 결과를 확인하고 타인의 변경·비밀값·임시 파일 포함 여부를 검사한다.
+
+### 5.3 로컬 시제품 경계
+
+현재 범위는 [시제품 안내](docs/11-local-prototype.md)를 따른다. 성별을 수집하지 않고 출생정보 원문을 저장·전송하지 않는다. 계산·AI·구매는 개발용 fixture/모의 처리이며 세션 상태를 실제 구매 권한으로 재사용하지 않는다. 검수 대기 캐릭터 사본은 로컬 디자인 확인에만 사용한다. 후속 생성 작업은 [프롬프트 계약](docs/12-reading-prompt-contract.md)을 먼저 읽는다.
 
 ## 6. 완료 정의 (DoD)
 

@@ -5,7 +5,7 @@
 - 상태: Active — 기존 디자인 기준을 통합. 미선택 항목은 아래 별도 표시.
 - 갱신: 2026-10-27. 적용 화면: 모바일 전용 웹앱 전체.
 - 색상·글자 크기·간격·컴포넌트·모션의 단일 기준은 이 파일이다. `AGENTS.md`는 작업 규칙, `docs/03-ui-design-system.md`는 화면 적용 안내를 담당한다.
-- 근거: [제품 정의](docs/00-product-brief.md), [IA](docs/01-information-architecture.md), [UX 카피](docs/02-ux-writing.md), 기존 UI 디자인 시스템, [캐릭터 가이드](docs/04-character-bible.md), `assets/reference/` 및 `assets/generated/` 이미지. 현재 구현 코드와 렌더된 화면은 없음.
+- 근거: [제품 정의](docs/00-product-brief.md), [IA](docs/01-information-architecture.md), [UX 카피](docs/02-ux-writing.md), 기존 UI 디자인 시스템, [캐릭터 가이드](docs/04-character-bible.md), `assets/reference/` 및 `assets/generated/` 이미지. 로컬 구현은 `src/styles/globals.css`, CSS Modules와 `src/components/app-shell.tsx`에 반영되어 있다.
 
 ## Brand · 브랜드
 
@@ -80,8 +80,8 @@ MVP 탭: 홈 / 오늘 운세 / 보관함. 입력 → 무료 결과 → 상품·�
 - 앱 루트: `width: 100%; max-width: 430px; min-height: 100dvh; margin-inline: auto`.
 - 기본 화면 폭: 390px; 최소 검증 폭 320px.
 - 측면 패딩: 20px(≤360px는 16px 가능), 카드 사이 12px, 구역 사이 24~32px.
-- 하단 탭: 64px + safe-area inset; 터치 타깃 최소 44×44px 권장.
-- 상단 앱바: 52~56px + 상단 safe-area 고려.
+- 하단 탭: 70px + safe-area inset; 터치 타깃 최소 44×44px 권장.
+- 상단 앱바: 78px. 브랜드와 보조 표기를 두 줄로 배치하는 로컬 시제품 선택.
 - 타이포: 본문 `Pretendard` 또는 `Noto Sans KR` 15~16px, line-height 1.55~1.7. 제목 22~28px, 섹션 제목 18~20px, 캡션 12~13px.
 - 포인트 손글씨풍 폰트는 타이틀/인용구 중 일부에만; 로컬 저장 폰트 라이선스 검토.
 - 인터랙티브 요소는 14px 아래 텍스트 최소화, 숫자/금액 고대비, Android/iOS 시스템 확대 반영.
@@ -108,11 +108,13 @@ MVP 탭: 홈 / 오늘 운세 / 보관함. 입력 → 무료 결과 → 상품·�
 
 기본 폰트 후보는 Pretendard, 미설치 시 시스템 sans-serif로 대체한다. 배포 서체와 라이선스 확인은 미결정이다. 약관·가격·핵심 오류를 캡션 크기로 축소하지 않는다.
 
+로컬 셸의 보조 타이포 예외: 로고 아래 장식용 보조 표기는 9px, 하단 탭의 짧은 이름은 11px이다. 탭은 70px 높이의 전체 영역을 누를 수 있고 24px 기호와 함께 표시한다. 본문·입력·구매 확인·주요 CTA는 위 가독성 기준을 유지한다. 작은 셸 표기는 실제 기기 확대·스크린리더 검사 후 운영 디자인에서 재평가한다.
+
 ### 공간·형태 토큰
 
 - `space`: 4 / 8 / 12 / 16 / 20 / 24 / 32px. 모바일 기본 패딩 20px, 360px 이하 16px.
 - 카드 반경 20px, 버튼 반경 14px, 주요 버튼 높이 56px, 보조 버튼 48px.
-- 앱바 기본 56px, 하단 탭 64px. safe area는 별도로 더한다.
+- 앱바 78px, 하단 탭 70px. 하단 safe area는 별도로 더한다.
 - 그림자는 장식에 한해 `0 4px 16px rgb(35 61 96 / 8%)`를 기본 제안값으로 사용한다. 상태 구분을 그림자에 의존하지 않는다.
 
 ### 이미지·아이콘
@@ -147,7 +149,7 @@ MVP 탭: 홈 / 오늘 운세 / 보관함. 입력 → 무료 결과 → 상품·�
 | `ShareCard` | 발령장/합동결재 | 개인정보·원본 이미지 오인 방지 |
 
 
-현재 구현된 컴포넌트는 없다. 구현 시 CSS 변수에 위 토큰을 매핑하고 모든 컴포넌트가 재사용한다. 색상·크기 변경의 기준 파일은 `DESIGN.md`이며 실제 CSS와 함께 갱신한다.
+위 목록은 제품 컴포넌트의 역할 기준이다. 로컬 시제품은 AppShell, 기능별 화면, 공용 ui.module.css와 globals.css 변수로 구현했으며 모든 목록을 별도 컴포넌트로 만든 것은 아니다. 색상·크기 변경의 기준 파일은 `DESIGN.md`이며 실제 CSS와 함께 갱신한다.
 
 ## Accessibility · 접근성
 
@@ -172,11 +174,11 @@ WCAG AA를 목표로 일반 텍스트 대비 4.5:1, 큰 글자 3:1을 검증한�
 
 ## Implementation constraints · 구현 제약
 
-Next.js 사용 확정. App Router + TypeScript를 구현 기준으로 제안한다. 스타일 도구는 미선택이며 CSS 변수 토큰을 공통 기준으로 사용한다. 실제 HTML 텍스트·버튼, 이미지 최적화, iOS Safari/Android Chrome 검증이 필요하다. 각 폭의 화면 캡처와 키보드·스크린리더·상태 검증을 완료해야 구현 완료로 간주한다. 이미지 용량/LCP 목표는 배포 환경 확정 후 측정 가능한 예산으로 정한다.
+Next.js App Router + TypeScript, CSS Modules/CSS 변수로 구현했다. 외부 폰트·아이콘 패키지 없이 시스템 서체와 CSS 장식을 사용한다. 검수 대기 캐릭터는 승인 상태를 유지한 로컬 확인용 사본이다. 실제 HTML 텍스트·버튼, 이미지 최적화, iOS Safari/Android Chrome 검증이 필요하다. 각 폭의 화면 캡처와 키보드·스크린리더·상태 검증을 완료해야 구현 완료로 간주한다. 이미지 용량/LCP 목표는 배포 환경 확정 후 측정 가능한 예산으로 정한다.
 
 ## Open questions · 남은 디자인 결정
 
 - [ ] 운영자: 생성된 운몽이 3면도의 후면·신발·장식 디테일 확정 — 마스터 승격에 영향.
 - [ ] 디자인/개발: 본문 서체·포인트 서체 및 라이선스 확정 — 폰트 배포에 영향.
-- [ ] 개발: 스타일 도구·아이콘 선택 — 컴포넌트 구현에 영향.
+- [x] 개발: 로컬 시제품은 CSS Modules/CSS 변수, 시스템 서체·CSS 장식 사용. 운영 서체·아이콘 변경은 별도 검토.
 - [ ] 디자인/개발: 실제 화면의 색 대비·이미지 용량 예산 검증 — 출시 수용 기준에 영향.

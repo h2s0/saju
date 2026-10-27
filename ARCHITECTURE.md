@@ -1,6 +1,6 @@
 # 천명록 아키텍처
 
-상태: 개발 시 적용할 구조 규칙 / 2026-10-27. 현재 앱 코드와 설치된 프레임워크 버전은 없다. Next.js 사용은 확정이며 App Router 기준으로 구조를 설명한다. TypeScript 및 DB·인증·PG·큐·배포 공급자 선택은 [기술 설계](docs/07-technical-architecture.md)의 추천/미결정 상태를 유지한다.
+상태: 로컬 시제품 구현 기준 / 2026-10-27. Next.js App Router + TypeScript를 사용한다. 설치 버전은 package-lock.json과 ADR-023을 따른다. DB·인증·PG·큐·배포 공급자는 [기술 설계](docs/07-technical-architecture.md)의 후속 추천/미결정 상태다.
 
 ## 1. 문서 역할과 설계 방향
 
@@ -21,10 +21,10 @@
 | `src/styles/` | DESIGN.md에 대응하는 토큰과 공통 스타일 |
 | `src/jobs/` | 비동기 작업 진입점·실행 환경·재시도 연결 |
 | `tests/integration/`, `tests/e2e/` | 경계 간 통합·사용자 흐름 테스트 |
-| `public/` | 공개 배포를 승인한 정적 파일만 보관 |
+| `public/` | 공개 정적 파일. 시제품의 검수 대기 캐릭터 사본은 로컬 확인에만 사용하며 운영 배포 전 승인 필요 |
 | `assets/reference/`, `assets/generated/` | 원본 및 생성 작업 에셋·검수 이력; 전부를 공개 배포하지 않음 |
 
-단위 테스트는 대상 옆의 `*.test.ts` 또는 `*.test.tsx`에 둔다. 경로·확장자 예시는 TypeScript 채택 시 기준이며 설치나 구현 완료를 뜻하지 않는다. 마이그레이션 경로는 DB 도구 선택 후 그 도구의 공식 규약에 따라 기록한다.
+단위 테스트는 대상 옆의 `*.test.ts` 또는 `*.test.tsx`에 둔다. 구조 표는 구현 위치를 정하는 기준이며 모든 폴더를 생성했다는 뜻은 아니다. 마이그레이션 경로는 DB 도구 선택 후 그 도구의 공식 규약에 따라 기록한다.
 
 Next.js의 `page.tsx`, `layout.tsx`, `route.ts`, `loading.tsx`, `error.tsx` 등 예약 이름은 그대로 따른다. 나머지 파일은 `create-order.ts`, `birth-form.tsx`처럼 책임이 드러나는 kebab-case, React 컴포넌트 export는 PascalCase를 기본으로 한다. 특정 라우트에서만 쓰는 조립용 파일은 `_components` 등 private folder에 둘 수 있지만 기능 로직의 두 번째 보관소로 사용하지 않는다.
 
@@ -52,6 +52,16 @@ Next.js의 `page.tsx`, `layout.tsx`, `route.ts`, `loading.tsx`, `error.tsx` 등 
 공용화는 실제 재사용이 확인된 뒤 진행한다. 거대한 `utils.ts`, `types.ts`, 만능 서비스 대신 역할이 드러나는 파일을 쓴다. 줄 수보다 책임·변경 이유가 달라지는 지점을 분리 기준으로 삼는다.
 
 ## 4. 주요 데이터 흐름
+
+### 현재 로컬 시제품
+
+`BirthForm` → 입력 검증 → `calculateSample` → 샘플 ID만 세션에 기록 → 처리 타이머 → `generateSampleReading`의 무료/상세 fixture를 표시한다. `features/demo/session-store.ts`가 샘플 방문·모의 구매 상태를 소유한다. checkout/library는 이 명시된 공개 진입점과 `features/reading/contracts.ts`만 참조한다. `reading-prompt.ts`는 후속 생성 입력·출력 검증 경계이며 외부 API를 호출하지 않는다.
+
+현재 샘플은 공개 클라이언트 번들에 포함된다. 화면의 모의 구매 검사는 실제 인증·인가가 아니며 세션 값을 실제 권한의 근거로 재사용하지 않는다. 원시 출생 입력은 컴포넌트 안에서 검증 후 버리고 서버에 전송하지 않는다. 서버 도메인·외부 연동·작업 폴더는 필요하지 않아 아직 생성하지 않았다. 실제 연동 때 아래 서버 흐름으로 교체해야 한다.
+
+구현된 라우트·재현 시나리오·저장 한계는 [시제품 안내](docs/11-local-prototype.md), 계약은 [풀이 프롬프트](docs/12-reading-prompt-contract.md)를 참조한다.
+
+아래 무료 조회·결제 승인·비동기 생성은 **후속 실제 서비스 구조**다.
 
 ### 무료 조회
 
@@ -89,9 +99,9 @@ Next.js의 `page.tsx`, `layout.tsx`, `route.ts`, `loading.tsx`, `error.tsx` 등 
 
 ## 6. 검증·변경 관리와 공식 근거
 
-코드가 생기면 관련 테스트·타입 검사·린트·빌드로 동작과 import 경계를 검증한다. 서버 코드의 클라이언트 유입, 순환 의존, 권한 누락, 중복 결제/생성, 새로고침 복원을 점검한다. 도구 설정이 없는 현재는 문서 링크·경로·책임의 일관성을 검사하며 앱 테스트가 통과했다고 표현하지 않는다.
+코드가 생기면 관련 테스트·타입 검사·린트·빌드로 동작과 import 경계를 검증한다. 서버 코드의 클라이언트 유입, 순환 의존, 권한 누락, 중복 결제/생성, 새로고침 복원을 점검한다. 현재 설정된 검사 명령은 README와 시제품 안내를 따른다. Vitest는 순수 계약·세션 데이터 검증, Playwright는 실제 화면 흐름을 담당한다. 문서 검사는 앱 검사와 별도로 기록한다.
 
-공식 문서 확인일: 2026-10-27. 아래는 App Router 가이드이며 **설치 버전이 확정되지 않았으므로 특정 버전에 대한 구현 검증은 아니다.** 구현 시 package manifest와 lockfile의 실제 버전에 맞춰 다시 확인한다.
+공식 문서 확인일: 2026-10-27. 아래는 App Router 가이드이며 이번 설치 버전·테스트 설정의 확인 근거는 ADR-023에 기록했다. 업그레이드 시 package manifest와 lockfile의 실제 버전에 맞춰 다시 확인한다.
 
 - [Next.js 프로젝트 구조](https://nextjs.org/docs/app/getting-started/project-structure) — 예약 파일·src·route/private folder 규약.
 - [Server and Client Components](https://nextjs.org/docs/app/getting-started/server-and-client-components) — 기본 서버 렌더링, 클라이언트 경계, server-only 보호.

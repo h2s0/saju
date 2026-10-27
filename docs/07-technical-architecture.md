@@ -1,13 +1,15 @@
 # 07. 기술 설계 초안 (개발 에이전트용)
 
-> **Next.js 사용은 사용자 확정(2026-10-27).** App Router + TypeScript 및 아래 백엔드 구성은 구현 추천안이다. PG·DB 서비스·로그인 수단·호스팅은 아직 계약/선택되지 않았다.
+> **현재 로컬 구현:** Next.js App Router + TypeScript, CSS Modules/CSS 변수, Vitest, Playwright를 사용한다. 계산·설명·구매는 클라이언트의 공개 샘플이며 실제 API·DB·AI·PG·로그인은 없다. 아래 객체·API·백엔드 추천안은 후속 연동 설계다. 현재 계약과 교체 경계는 [풀이 프롬프트 계약](12-reading-prompt-contract.md), 실행·저장 한계는 [시제품 안내](11-local-prototype.md)를 따른다.
+
+> **Next.js 사용은 사용자 확정(2026-10-27).** App Router + TypeScript는 시제품에 구현했으며 아래 백엔드 구성은 후속 추천안이다. PG·DB 서비스·로그인 수단·호스팅은 아직 계약/선택되지 않았다.
 
 ## 1. 추천 스택
 
 | 영역 | 권장 후보 | 이유/주의 |
 | --- | --- | --- |
-| 프런트 | Next.js 확정 / App Router + TypeScript 권장 | 모바일 단일 페이지 구성과 동적 결과 라우팅 |
-| 스타일 | Tailwind CSS + CSS 변수 토큰 | 컬러/간격 일관성, 디자인 시스템 확장 |
+| 프런트 | Next.js App Router + TypeScript 구현 | 모바일 단일 페이지 구성과 동적 결과 라우팅 |
+| 스타일 | CSS Modules + CSS 변수 토큰 (시제품 확정) | 컬러/간격 일관성, 디자인 시스템 확장 |
 | 컴포넌트 | 접근성 검증된 headless UI 기반 | 입력·다이얼로그 접근성 확보 |
 | API | Next.js Route Handlers + 서버 도메인 서비스 권장 | 초기 웹 API를 한 저장소에서 운영, 장시간 작업은 별도 worker |
 | DB | PostgreSQL + SQL 마이그레이션 | 유저/주문/리포트/권한 일관성 |

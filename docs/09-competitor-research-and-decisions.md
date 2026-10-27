@@ -97,7 +97,7 @@
 | ADR-021 | 사용자 계획 승인 | 한국어 Conventional Commits와 목적 하나의 작은 커밋 | [커밋 기준](../COMMIT_CONVENTION.md). Lore는 선택적 결정 트레일러로 유지 |
 | ADR-022 | 사용자 계획 승인 | 가벼운 기능별 구조와 단방향 의존 | [아키텍처 기준](../ARCHITECTURE.md). Next.js 공식 규약과 프로젝트 선택을 구분하며 공급자 후보는 미확정 유지 |
 
-근거: [Conventional Commits 1.0.0](https://www.conventionalcommits.org/en/v1.0.0/), [Next.js 프로젝트 구조](https://nextjs.org/docs/app/getting-started/project-structure), [Server/Client Components](https://nextjs.org/docs/app/getting-started/server-and-client-components). 확인일 2026-10-27. Next.js는 미설치로 적용 버전 미선택; 구현 때 버전별 재검증 필요. 단위·통합·E2E 파일 배치와 커밋의 목적 단위는 프로젝트 선택이며 현재 검사 도구 설치를 의미하지 않는다.
+근거: [Conventional Commits 1.0.0](https://www.conventionalcommits.org/en/v1.0.0/), [Next.js 프로젝트 구조](https://nextjs.org/docs/app/getting-started/project-structure), [Server/Client Components](https://nextjs.org/docs/app/getting-started/server-and-client-components). 확인일 2026-10-27. 이 규칙을 기록한 시점에는 Next.js 적용 버전이 미선택이었다. 이후 설치·공식 설정 확인은 ADR-023에 기록했다. 단위·통합·E2E 파일 배치와 커밋의 목적 단위는 프로젝트 선택이다.
 
 전체 출시 의사결정은 [10-launch-decisions.md](10-launch-decisions.md)에서 확인한다.
 
@@ -117,3 +117,9 @@
 공식 근거: [Next.js 설치](https://nextjs.org/docs/app/getting-started/installation), [Vitest 구성](https://nextjs.org/docs/app/guides/testing/vitest), [Playwright 구성](https://nextjs.org/docs/app/guides/testing/playwright), [Vitest 가이드](https://vitest.dev/guide/), [Playwright 설정](https://playwright.dev/docs/test-configuration). 확인일 2026-10-27. Next.js 16.4.3, React 19.3.1, Vitest 5.0.5, Playwright 1.64.1을 선택했고 정확한 의존성 버전은 package-lock.json에 고정한다.
 
 프로젝트 선택: 외부 폰트/아이콘 패키지 없이 시스템 서체와 CSS를 사용한다. src/app의 화면 조립은 서버 컴포넌트, 상호작용·sessionStorage 경계만 클라이언트 컴포넌트로 둔다. 테스트는 비동기 서버 컴포넌트 자체를 Vitest에서 흉내내지 않고 순수 계약·검증에 집중하며 실제 화면은 Playwright로 확인한다. 생성 캐릭터는 승인 상태를 변경하지 않고 로컬 시제품 확인용으로만 사용한다.
+
+## ADR-024 · 시제품의 데이터·구매·풀이 경계 (2026-10-27)
+
+사용자 승인 계획에 따라 원시 출생정보를 저장·전송하지 않고 시간 유무에 따른 두 샘플 ID와 모의 구매 상태만 sessionStorage에 둔다. 성별은 수집하지 않는다. 계산·근거 데이터는 `development-fixture`로 표시하며 실제 해석 출처나 정확성을 주장하지 않는다. 990원은 상품 가격안, 실제 체험 청구액은 0원이다.
+
+클라이언트의 샘플 접근 제어는 UI 체험이며 실제 권한 보안이 아니다. 운영 연동 때 서버 계산·인가·주문 원장으로 교체한다. 시간 미상은 시주를 null로 두고 시간 근거를 제외하며, 생년월일 원문 없는 생성 입력과 다섯 영역 JSON 검증을 분리한다. 구조 검증은 정확도 보증이 아니다. [시제품 안내](11-local-prototype.md)와 [풀이 프롬프트 계약](12-reading-prompt-contract.md)에 구현 경계를 기록한다.

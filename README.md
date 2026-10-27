@@ -1,6 +1,15 @@
 # 천명록 (天命錄) — Product Documentation
 
-> **Status:** Draft v1.0 · 2026-10-27 · 기획 기준 문서 (구현 완료 문서 아님)
+홈 → 출생 입력 → 무료 샘플 → 모의 구매 → 다섯 영역 상세 결과 → 보관함을 체험할 수 있다. 오늘 운세도 고정 샘플이다. 실행 방법과 한계는 [로컬 시제품 안내](docs/11-local-prototype.md), 후속 생성 계약은 [풀이 프롬프트 계약](docs/12-reading-prompt-contract.md)을 따른다.
+
+```sh
+npm ci
+npm run dev
+```
+
+기본 주소는 `http://127.0.0.1:3000`이다. 검사는 `npm run lint`, `npm run typecheck`, `npm test`, `npm run build`로 실행한다. E2E는 Chromium 설치 후 빌드된 앱에서 `npm run test:e2e`로 실행한다. Node.js 24.22.1 / npm 11.19.1 환경에서 검증했다.
+
+> **Status:** 로컬 시제품 · 2026-10-27 · 실제 사주 계산·AI·로그인·결제 미연결
 >
 > **Product:** 모바일 전용 웹앱으로 제공하는 캐릭터 기반 사주 풀이 서비스
 >
@@ -24,17 +33,22 @@
 
 개발 공통 기준: [ARCHITECTURE.md](./ARCHITECTURE.md)에서 파일 배치·의존 방향을, [COMMIT_CONVENTION.md](./COMMIT_CONVENTION.md)에서 한국어 Conventional Commits와 작은 목적 단위를 확인한다. 공식 문서·설치 버전 확인 절차는 [AGENTS.md](./AGENTS.md)를 따른다.
 
-Next.js 사용은 확정이며, 백엔드 공급자·인증·PG·운영 정책은 기술 문서와 출시 결정 목록의 추천/미결정 상태를 따른다.
+Next.js App Router + TypeScript, CSS Modules/CSS 변수, Vitest, Playwright는 시제품에 적용했다. 백엔드 공급자·인증·PG·운영 정책은 후속 실제 연동 단계의 추천/미결정 상태를 따른다.
 
 ## 디렉터리
 
 ```text
-cheonmyeongrok-product-spec/
+saju/
 ├─ AGENTS.md
 ├─ ARCHITECTURE.md
 ├─ COMMIT_CONVENTION.md
 ├─ DESIGN.md
 ├─ README.md
+├─ src/              # app: 라우트, features: 기능, components: 공용 UI, styles: 토큰
+├─ public/images/    # 로컬 확인용 캐릭터 사본 (승인 상태는 변경하지 않음)
+├─ tests/e2e/        # Playwright 사용자 흐름 검사
+├─ package.json
+├─ package-lock.json
 ├─ assets/
 │  └─ reference/
 │     ├─ woonmong_original_landing.png  # 사용자가 확정한 원본 이미지가 들어 있는 최초 랜딩 시안
@@ -50,13 +64,15 @@ cheonmyeongrok-product-spec/
    ├─ 07-technical-architecture.md
    ├─ 08-analytics-and-qa.md
    ├─ 09-competitor-research-and-decisions.md
-   └─ 10-launch-decisions.md
+   ├─ 10-launch-decisions.md
+   ├─ 11-local-prototype.md
+   └─ 12-reading-prompt-contract.md
 ```
 
 ## 사실·제안 구분
 
 - **확정(사용자):** Next.js 사용, 한국어 Conventional Commits, 가벼운 기능별 코드 구조, 모바일 전용 웹앱, '견습 신선' 세계관, 원본 이미지 속 운몽이 외형, 뽀용한 하늘색 방향, 이전 UX 라이팅의 친근한 결
-- **기획안(변경 가능):** 가격별 상품 구성, 하단 탭 수, 무료 콘텐츠 범위, 천계 발령장/합동결재, Next.js 외 내부 기술 스택, 데이터 지표
+- **기획안(변경 가능):** 가격별 상품 구성, 하단 탭 수, 무료 콘텐츠 범위, 천계 발령장/합동결재, 미연결 백엔드 기술 스택, 데이터 지표
 - **미검증:** 사주 만세력/일주 계산의 정확성, 결제 제공사·수수료·정책, 지적재산권/상표 등록 여부, 타사 상세 결제 프로세스
 - 서비스의 사주 콘텐츠는 해석·엔터테인먼트이며 미래 사건이나 정확도를 보장하지 않는다.
 
