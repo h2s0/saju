@@ -1,0 +1,3 @@
+import Link from 'next/link';
+import ui from '@/components/ui.module.css';
+export default function Support(){return <div className={ui.page}><div className={ui.intro}><p className={ui.eyebrow}>PROTOTYPE GUIDE</p><h1>지금은 미리 만나는 천명록이에요</h1></div><div className={ui.card}><h2>개발용 샘플 안내</h2><p>실제 명식 계산, AI 해석, 로그인, 결제는 연결되지 않았어요. 모든 결과는 입력과 무관한 고정 샘플이며 실제 비용이 청구되지 않아요.</p><p>한국 출생 기준의 입력 화면을 체험할 수 있어요. 음력 변환과 실제 윤달의 존재 여부는 검증하지 않아요.</p><p>입력한 생년월일과 시각은 저장하거나 서버에 전송하지 않아요. 새로고침하면 입력은 사라지고, 이 탭의 샘플 열람·모의 구매 상태만 남아요. 탭을 닫거나 보관함에서 초기화하면 체험 기록이 지워져요.</p><p>캐릭터는 검수 대기 에셋을 로컬 디자인 확인에 사용하고 있어요. 운영 서비스가 아니므로 실제 고객지원·환불 접수는 제공하지 않아요.</p></div><Link href="/" className={ui.secondary}>홈으로 돌아가기</Link></div>}

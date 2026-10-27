@@ -109,3 +109,11 @@
 - [ ] `천명록`, `운몽이` 상표/서비스명·도메인 충돌 확인
 - [ ] 외부 만세력 엔진 2개 이상 교차 검증
 - [ ] 유저 5~8명을 대상으로 홈 카피/결제/공유 발령장 사용성 테스트
+
+## ADR-023 · 로컬 시제품 기술 구성 (2026-10-27)
+
+사용자 승인: Next.js App Router + TypeScript, CSS Modules/CSS 변수, Vitest 단위 검사, Playwright 브라우저 검사. 실제 계산·AI·PG·인증은 연결하지 않는다. 첫 상품은 기질·관계·일·돈 관리 습관·실천 조언이며 올해/월별/대운은 후속으로 분리한다.
+
+공식 근거: [Next.js 설치](https://nextjs.org/docs/app/getting-started/installation), [Vitest 구성](https://nextjs.org/docs/app/guides/testing/vitest), [Playwright 구성](https://nextjs.org/docs/app/guides/testing/playwright), [Vitest 가이드](https://vitest.dev/guide/), [Playwright 설정](https://playwright.dev/docs/test-configuration). 확인일 2026-10-27. Next.js 16.4.3, React 19.3.1, Vitest 5.0.5, Playwright 1.64.1을 선택했고 정확한 의존성 버전은 package-lock.json에 고정한다.
+
+프로젝트 선택: 외부 폰트/아이콘 패키지 없이 시스템 서체와 CSS를 사용한다. src/app의 화면 조립은 서버 컴포넌트, 상호작용·sessionStorage 경계만 클라이언트 컴포넌트로 둔다. 테스트는 비동기 서버 컴포넌트 자체를 Vitest에서 흉내내지 않고 순수 계약·검증에 집중하며 실제 화면은 Playwright로 확인한다. 생성 캐릭터는 승인 상태를 변경하지 않고 로컬 시제품 확인용으로만 사용한다.
