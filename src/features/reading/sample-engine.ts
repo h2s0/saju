@@ -1,3 +1,4 @@
+import { validateGeneratedSections } from "./reading-prompt";
 import { validateBirthInput } from "./birth-validation";
 import type {
   BirthInput,
@@ -102,8 +103,25 @@ function sectionFixtures(): ReadingSection[] {
   ];
 }
 
+/** Replace this boundary with a server-side provider after real evidence is verified. */
+export function generateSampleDetails(
+  calculation: CalculationResult,
+  evidence: InterpretationEvidence[],
+): ReadingSection[] {
+  const result = validateGeneratedSections(
+    { sections: sectionFixtures() },
+    calculation,
+    evidence,
+  );
+  if (!result.valid) {
+    throw new Error("샘플 설명에 필요한 해석 근거가 없거나 사용할 수 없어요.");
+  }
+  return result.sections;
+}
+
 export function generateSampleReading(id: SampleId): ReadingResult {
   const evidence = evidenceFixtures();
+  const calculation = sampleCalculation(id === "sample-known");
   const previewByRule: Record<string, string> = {
     "sample-care": "작은 마음의 움직임도 천천히 살펴보는 시간을 가져 봐요. 이 개발용 예시에서는 신중함을 살리면서도 작은 시도를 시작하는 방법을 소개해요. 입력하신 생년월일에서 알아낸 성향은 아니에요.",
     "sample-listen": "관계에서는 상대의 뜻을 혼자 추측하기보다 다정하게 물어보는 연습을 해 봐요. 나의 생각도 구체적인 말로 전하면 서로를 이해하는 데 도움이 될 수 있어요.",
@@ -111,12 +129,12 @@ export function generateSampleReading(id: SampleId): ReadingResult {
   return {
     id,
     isSample: true,
-    calculation: sampleCalculation(id === "sample-known"),
+    calculation,
     freeParagraphs: evidence.flatMap((item) =>
       previewByRule[item.id] ? [previewByRule[item.id]] : [],
     ),
     advice: "오늘 하고 싶은 일 하나를 적고, 시작할 수 있는 가장 작은 행동을 골라 보세요.",
-    sections: sectionFixtures(),
+    sections: generateSampleDetails(calculation, evidence),
     evidence,
     generationVersion: "sample-reading-v1",
   };

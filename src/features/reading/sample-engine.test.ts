@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { calculateSample, generateSampleReading } from "./sample-engine";
+import { calculateSample, generateSampleReading, generateSampleDetails } from "./sample-engine";
 import { isSampleId, SECTION_IDS, type BirthInput } from "./contracts";
 
 const input: BirthInput = {
@@ -53,5 +53,19 @@ describe("sample calculation and reading", () => {
     expect(isSampleId("sample-unknown")).toBe(true);
     expect(isSampleId("user-1995-06-15")).toBe(false);
     expect(isSampleId(null)).toBe(false);
+  });
+});
+
+
+describe("detail generator evidence boundary", () => {
+  it("rejects missing evidence rather than inventing a justification", () => {
+    const reading = generateSampleReading("sample-known");
+    expect(() => generateSampleDetails(reading.calculation, reading.evidence.slice(1))).toThrow();
+  });
+
+  it("rejects time-dependent evidence when time is unknown", () => {
+    const reading = generateSampleReading("sample-unknown");
+    reading.evidence[0].requiresBirthTime = true;
+    expect(() => generateSampleDetails(reading.calculation, reading.evidence)).toThrow();
   });
 });
