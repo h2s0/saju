@@ -1,0 +1,48 @@
+{
+  "canonical_original": "../reference/woonmong_original_landing.png",
+  "assets": [
+    {
+      "file": "woonmong-cutout_smile_v01.png",
+      "size": [
+        1293,
+        1217
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "transparent_pixels": 710649,
+      "partial_alpha_pixels": 862570,
+      "status": "pending_user_review",
+      "reference": "../reference/woonmong_reference_crop.png",
+      "prompt": "prompts/cutout_v01.txt",
+      "tool": "built-in image_gen",
+      "created_date": "2026-10-27"
+    },
+    {
+      "file": "woonmong-turnaround_neutral_v01.png",
+      "size": [
+        1891,
+        832
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "transparent_pixels": 617961,
+      "partial_alpha_pixels": 955167,
+      "status": "pending_user_review",
+      "reference": "../reference/woonmong_reference_crop.png",
+      "prompt": "prompts/turnaround_v01.txt",
+      "tool": "built-in image_gen",
+      "created_date": "2026-10-27"
+    }
+  ],
+  "review": {
+    "identity": "Silver-white hair, gray-brown eyes, blue/gold crown and watercolor style retained; AI redraw, not pixel-exact extraction.",
+    "turnaround": "Front, right-facing profile and back present. Back hair, shoes and hidden robe construction inferred. Crown details and ribbon loops require user review before canonical promotion.",
+    "deployment": "No UI integration or canonical promotion."
+  }
+}
