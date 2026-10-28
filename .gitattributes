@@ -1,0 +1,4 @@
+# Preserve the official font license PDF as a binary document.
+src/styles/fonts/*.pdf binary
+# Keep the upstream license text byte-for-byte, including its whitespace.
+src/styles/fonts/LICENSE-Pretendard.txt -whitespace

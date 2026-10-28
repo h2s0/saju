@@ -35,7 +35,7 @@ npm run dev
 
 개발 공통 기준: [ARCHITECTURE.md](./ARCHITECTURE.md)에서 파일 배치·의존 방향을, [COMMIT_CONVENTION.md](./COMMIT_CONVENTION.md)에서 한국어 Conventional Commits와 작은 목적 단위를 확인한다. 공식 문서·설치 버전 확인 절차는 [AGENTS.md](./AGENTS.md)를 따른다.
 
-디자인 기준은 [DESIGN.md](DESIGN.md)에 정리했다. 2026-10-28 선택한 써라운드 에어 제목·Pretendard 본문과 커비 포털을 참고한 둥근 카드·별·구름은 **문서 확정 / 화면 적용 전**이다. 화면별 적용과 후속 검수는 [디자인 가이드](docs/03-ui-design-system.md)를 따른다.
+디자인 기준은 [DESIGN.md](DESIGN.md)에 정리했다. 2026-10-28 선택한 써라운드 에어 제목·Pretendard 본문과 커비 포털을 참고한 둥근 카드·별·구름은 **로컬 화면에 적용했다**. 서체 파일은 자체 호스팅하며 공식 출처·버전·라이선스는 [서체 안내](src/styles/fonts/README.md)에 보관한다. 화면별 적용과 후속 검수는 [디자인 가이드](docs/03-ui-design-system.md)를 따른다.
 
 Next.js App Router + TypeScript, CSS Modules/CSS 변수, Vitest, Playwright는 시제품에 적용했다. 백엔드 공급자·인증·PG·운영 정책은 후속 실제 연동 단계의 추천/미결정 상태를 따른다.
 

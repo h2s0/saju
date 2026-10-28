@@ -1,0 +1,8 @@
+.sky { position: absolute; inset: 0; overflow: hidden; pointer-events: none; border-radius: inherit; }
+.star { position: absolute; width: var(--motif-star-medium); height: var(--motif-star-medium); background: var(--color-accent-gold); clip-path: polygon(50% 0, 61% 37%, 100% 50%, 61% 63%, 50% 100%, 39% 63%, 0 50%, 39% 37%); }
+.first { left: 8%; top: 26%; width: var(--motif-star-small); height: var(--motif-star-small); }
+.second { right: 7%; top: 51%; width: var(--motif-star-large); height: var(--motif-star-large); }
+.third { left: 7%; bottom: 20%; }
+.cloud { position: absolute; width: 112px; height: 48px; background: radial-gradient(ellipse at 28% 72%, white 0 26%, transparent 27%), radial-gradient(ellipse at 53% 46%, white 0 35%, transparent 36%), radial-gradient(ellipse at 76% 70%, white 0 29%, transparent 30%); }
+.left { bottom: 8%; left: 0; }
+.right { top: 10%; right: 0; width: 80px; }

@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import s from './home.module.css';
 import ui from '@/components/ui.module.css';
+import { SkyMotifs } from '@/components/sky-motifs';
 import { ProductCards } from '@/features/products/product-cards';
 export default function Home() {
  return <>
@@ -10,10 +11,10 @@ export default function Home() {
    <h1>하늘 어딘가에 기록된,<br/><em>나만의 이야기</em></h1>
    <p className={s.lead}>조금 서툴지만, 정성껏 찾아볼게요.<br/>견습 신선 운몽이와 첫 장을 펼쳐보세요.</p>
    <div className={s.art}>
-    <span className={s.orbit} aria-hidden="true"/><span className={s.starOne} aria-hidden="true">✧</span><span className={s.starTwo} aria-hidden="true">✦</span>
+    <SkyMotifs/>
+    <span className={s.orbit} aria-hidden="true"/>
     <span className={s.artNote}>당신의 이야기를<br/>찾고 있었어요!</span>
     <Image src="/images/woonmong-cutout.png" alt="붓을 들고 반갑게 웃는 견습 신선 운몽이" width={1293} height={1217} priority sizes="280px" className={s.character}/>
-    <span className={s.cloudOne} aria-hidden="true"/><span className={s.cloudTwo} aria-hidden="true"/>
    </div>
    <Link href="/reading/new" className={ui.primary}>내 운명록 찾아보기 <span aria-hidden="true">→</span></Link>
    <p className={s.free}>무료 미리보기부터 · 실제 결제 없이 체험해요</p>

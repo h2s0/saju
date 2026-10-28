@@ -10,6 +10,7 @@ export function ProductCards() {
       href={`/products/${product.id}`}
       aria-label={`${product.title} 상품 보기`}
     >
+      <span className={s.sparkle} aria-hidden="true"/>
       <span className={s.icon} aria-hidden="true">{product.icon}</span>
       <div><span className={s.subtitle}>{product.subtitle}</span><h3>{product.title}</h3><p>{product.description}</p></div>
       <span className={s.price}>{product.price === null ? '가격 미정' : `${product.price.toLocaleString('ko-KR')}원 가격안`}<small>샘플 체험 0원</small></span>
