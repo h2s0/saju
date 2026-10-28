@@ -1,0 +1,1460 @@
+{
+  "version": "0.1.0-research",
+  "statusDefinitions": {
+    "conditional-tradition": "원문/전통의 제한된 요약. 조건 검사와 검토자 승인 후 설명 실험 가능; 예측 검증·실서비스 승인이 아님.",
+    "project-guardrail": "제품/개인정보/추론 제한. 명리 원전의 주장으로 인용 금지.",
+    "quarantined": "정의·출처·적용법이 부족하거나 충돌. AI의 실질 해석 근거로 선택 금지; 보류 이유만 전달."
+  },
+  "rules": [
+    {
+      "id": "K-BASIS-01",
+      "version": "0.1.0-research",
+      "title": "음양오행은 설명의 분류 틀",
+      "domains": [
+        "basic"
+      ],
+      "requiredFeatures": [
+        "dayMaster",
+        "pillars",
+        "yinYang"
+      ],
+      "conditions": [
+        "일간과 분류가 계산 완료"
+      ],
+      "exceptions": [
+        "음양 비율만 있음",
+        "지지 자체와 본기 음양 혼동"
+      ],
+      "allowedInterpretation": [
+        "전통 분류에서 사용하는 명칭과 관계를 설명한다"
+      ],
+      "forbiddenClaims": [
+        "양이 많으니 남성적이다",
+        "음이 많으니 내향적이다",
+        "생물학적 성별·건강 추정"
+      ],
+      "sourceIds": [
+        "ZP-STEMS",
+        "ZP-ELEMENTS"
+      ],
+      "school": "자평명리·전체 원국 우선",
+      "status": "conditional-tradition",
+      "basis": "원전 요약을 바탕으로 한 프로젝트 해석 제한",
+      "requiresBirthTime": false,
+      "advice": "근거가 허용하는 점검 항목 하나를 정하고 일상에서 관찰한다.",
+      "missingPolicy": "필수 특징이 없거나 판정이 미정이면 적용하지 않고 제한사항을 반환",
+      "runtimeEnabled": false
+    },
+    {
+      "id": "K-BASIS-02",
+      "version": "0.1.0-research",
+      "title": "상생=무조건 좋음, 상극=무조건 나쁨 금지",
+      "domains": [
+        "basic",
+        "career",
+        "money"
+      ],
+      "requiredFeatures": [
+        "dayMaster",
+        "tenGods",
+        "strengthReview"
+      ],
+      "conditions": [
+        "생극 경로와 전체 원국의 역할이 검토됨"
+      ],
+      "exceptions": [
+        "생조 과다",
+        "과도한 설기",
+        "억제 기능이 필요한 경우"
+      ],
+      "allowedInterpretation": [
+        "같은 생극도 전체 관계에 따라 쓰임이 달라진다는 설명"
+      ],
+      "forbiddenClaims": [
+        "물은 목을 살리니 항상 길함",
+        "관살은 나쁜 사람이다"
+      ],
+      "sourceIds": [
+        "ZP-ELEMENTS"
+      ],
+      "school": "자평명리·전체 원국 우선",
+      "status": "conditional-tradition",
+      "basis": "원전 요약을 바탕으로 한 프로젝트 해석 제한",
+      "requiresBirthTime": false,
+      "advice": "근거가 허용하는 점검 항목 하나를 정하고 일상에서 관찰한다.",
+      "missingPolicy": "필수 특징이 없거나 판정이 미정이면 적용하지 않고 제한사항을 반환",
+      "runtimeEnabled": false
+    },
+    {
+      "id": "K-BASIS-03",
+      "version": "0.1.0-research",
+      "title": "지장간과 투간의 층위 구분",
+      "domains": [
+        "basic",
+        "career"
+      ],
+      "requiredFeatures": [
+        "hiddenStems",
+        "revealed",
+        "monthSeason"
+      ],
+      "conditions": [
+        "채택 지장간 표의 버전이 있음"
+      ],
+      "exceptions": [
+        "사령 분일과 고정 지장간 표의 값이 다른 경우",
+        "본기만으로 전체 지장간을 대표한 경우"
+      ],
+      "allowedInterpretation": [
+        "숨은 관계와 드러난 관계를 구분해 제시한다"
+      ],
+      "forbiddenClaims": [
+        "지장간 개수=성격 강도",
+        "여기/중기 비율을 출처 없이 확정"
+      ],
+      "sourceIds": [
+        "SM-HIDDEN",
+        "ZP-RESOURCE"
+      ],
+      "school": "자평명리·전체 원국 우선",
+      "status": "conditional-tradition",
+      "basis": "원전 요약을 바탕으로 한 프로젝트 해석 제한",
+      "requiresBirthTime": false,
+      "advice": "근거가 허용하는 점검 항목 하나를 정하고 일상에서 관찰한다.",
+      "missingPolicy": "필수 특징이 없거나 판정이 미정이면 적용하지 않고 제한사항을 반환",
+      "runtimeEnabled": false
+    },
+    {
+      "id": "K-BASIS-04",
+      "version": "0.1.0-research",
+      "title": "십성은 일간에 대한 상대적 관계",
+      "domains": [
+        "basic",
+        "love",
+        "career",
+        "money"
+      ],
+      "requiredFeatures": [
+        "dayMaster",
+        "tenGods"
+      ],
+      "conditions": [
+        "일간과 상대 간의 오행·음양 기준이 계산됨"
+      ],
+      "exceptions": [
+        "지지 십성이 본기 기준인지 불명확",
+        "본기와 지지 자체의 음양을 혼용"
+      ],
+      "allowedInterpretation": [
+        "비겁·식상·재성·관살·인성은 관계명이라는 점을 먼저 밝힌다"
+      ],
+      "forbiddenClaims": [
+        "겁재=도둑",
+        "칠살=악인",
+        "상관=불륜"
+      ],
+      "sourceIds": [
+        "ZP-ELEMENTS",
+        "ZP-PALACES"
+      ],
+      "school": "자평명리·전체 원국 우선",
+      "status": "conditional-tradition",
+      "basis": "원전 요약을 바탕으로 한 프로젝트 해석 제한",
+      "requiresBirthTime": false,
+      "advice": "근거가 허용하는 점검 항목 하나를 정하고 일상에서 관찰한다.",
+      "missingPolicy": "필수 특징이 없거나 판정이 미정이면 적용하지 않고 제한사항을 반환",
+      "runtimeEnabled": false
+    },
+    {
+      "id": "K-STRENGTH-01",
+      "version": "0.1.0-research",
+      "title": "오행 개수와 세력 분리",
+      "domains": [
+        "basic",
+        "love",
+        "career",
+        "money"
+      ],
+      "requiredFeatures": [
+        "elementCounts",
+        "monthSeason",
+        "roots",
+        "strengthReview"
+      ],
+      "conditions": [
+        "표면 개수와 월령·뿌리를 별도 평가"
+      ],
+      "exceptions": [
+        "시간 미상으로 분포 일부 누락",
+        "가중치/합화 정책 미확정"
+      ],
+      "allowedInterpretation": [
+        "글자 수가 많다는 사실만 설명하고 강약은 별도 검토한다"
+      ],
+      "forbiddenClaims": [
+        "목 3개라 신강",
+        "화가 제일 많으니 화가 용신"
+      ],
+      "sourceIds": [
+        "ZP-STRENGTH"
+      ],
+      "school": "자평명리·전체 원국 우선",
+      "status": "conditional-tradition",
+      "basis": "원전 요약을 바탕으로 한 프로젝트 해석 제한",
+      "requiresBirthTime": false,
+      "advice": "숫자에 성격을 맞추지 말고 관찰 가능한 행동만 점검한다.",
+      "missingPolicy": "필수 특징이 없거나 판정이 미정이면 적용하지 않고 제한사항을 반환",
+      "runtimeEnabled": false
+    },
+    {
+      "id": "K-STRENGTH-02",
+      "version": "0.1.0-research",
+      "title": "득령과 신강은 동의어가 아님",
+      "domains": [
+        "basic",
+        "career"
+      ],
+      "requiredFeatures": [
+        "monthSeason",
+        "roots",
+        "tenGods",
+        "strengthReview"
+      ],
+      "conditions": [
+        "계절의 도움과 전체 생조·설기·제어를 모두 검토"
+      ],
+      "exceptions": [
+        "득령하나 설기·극이 집중",
+        "실령하나 뿌리와 도움이 충분"
+      ],
+      "allowedInterpretation": [
+        "계절과 원국 전체 지지의 판단이 다를 수 있음을 설명한다"
+      ],
+      "forbiddenClaims": [
+        "봄의 목은 반드시 신강",
+        "겨울의 화는 무조건 무능"
+      ],
+      "sourceIds": [
+        "ZP-STRENGTH"
+      ],
+      "school": "자평명리·전체 원국 우선",
+      "status": "conditional-tradition",
+      "basis": "원전 요약을 바탕으로 한 프로젝트 해석 제한",
+      "requiresBirthTime": false,
+      "advice": "근거가 허용하는 점검 항목 하나를 정하고 일상에서 관찰한다.",
+      "missingPolicy": "필수 특징이 없거나 판정이 미정이면 적용하지 않고 제한사항을 반환",
+      "runtimeEnabled": false
+    },
+    {
+      "id": "K-STRENGTH-03",
+      "version": "0.1.0-research",
+      "title": "통근은 위치와 작용까지 검토",
+      "domains": [
+        "basic",
+        "career"
+      ],
+      "requiredFeatures": [
+        "roots",
+        "relations",
+        "strengthReview"
+      ],
+      "conditions": [
+        "뿌리 위치와 합충 영향에 대한 검토가 있음"
+      ],
+      "exceptions": [
+        "뿌리 검출만 하고 작용 판단 없음",
+        "시간 미상 뿌리 추가 가능"
+      ],
+      "allowedInterpretation": [
+        "같은 오행 반복과 뿌리의 작용을 구별한다"
+      ],
+      "forbiddenClaims": [
+        "뿌리 하나=천간 세 개라는 고정 점수",
+        "통근이면 항상 신강"
+      ],
+      "sourceIds": [
+        "ZP-STRENGTH"
+      ],
+      "school": "자평명리·전체 원국 우선",
+      "status": "conditional-tradition",
+      "basis": "원전 요약을 바탕으로 한 프로젝트 해석 제한",
+      "requiresBirthTime": false,
+      "advice": "근거가 허용하는 점검 항목 하나를 정하고 일상에서 관찰한다.",
+      "missingPolicy": "필수 특징이 없거나 판정이 미정이면 적용하지 않고 제한사항을 반환",
+      "runtimeEnabled": false
+    },
+    {
+      "id": "K-STRENGTH-04",
+      "version": "0.1.0-research",
+      "title": "없는 오행을 결핍 인격으로 읽지 않음",
+      "domains": [
+        "basic",
+        "love",
+        "money"
+      ],
+      "requiredFeatures": [
+        "elementCounts",
+        "hiddenStems",
+        "timeKnown"
+      ],
+      "conditions": [
+        "표면/지장간 기준의 부재가 명시됨"
+      ],
+      "exceptions": [
+        "시주 미상",
+        "숨은 오행을 제외한 표면 집계",
+        "다른 작용으로 설명 가능"
+      ],
+      "allowedInterpretation": [
+        "관찰 범위의 분포 정보로 한정한다"
+      ],
+      "forbiddenClaims": [
+        "수가 없어서 지혜가 없다",
+        "금이 없어서 돈복이 없다",
+        "색·물건 구매로 개운 보장"
+      ],
+      "sourceIds": [
+        "ZP-STRENGTH"
+      ],
+      "school": "자평명리·전체 원국 우선",
+      "status": "conditional-tradition",
+      "basis": "전체 원국 원칙에서 도출한 프로젝트 안전 제한",
+      "requiresBirthTime": false,
+      "advice": "근거가 허용하는 점검 항목 하나를 정하고 일상에서 관찰한다.",
+      "missingPolicy": "필수 특징이 없거나 판정이 미정이면 적용하지 않고 제한사항을 반환",
+      "runtimeEnabled": false
+    },
+    {
+      "id": "K-PATTERN-01",
+      "version": "0.1.0-research",
+      "title": "격국은 후보와 성립·구응을 함께 제시",
+      "domains": [
+        "basic",
+        "career",
+        "money"
+      ],
+      "requiredFeatures": [
+        "monthSeason",
+        "hiddenStems",
+        "revealed",
+        "patternReview"
+      ],
+      "conditions": [
+        "월령 중심 격 후보와 예외가 검토됨"
+      ],
+      "exceptions": [
+        "잡기/변격/종격의 학파 차이",
+        "격명이 있으나 성립 검토 없음"
+      ],
+      "allowedInterpretation": [
+        "채택 학파에서의 구성과 상충하는 해석을 함께 밝힌다"
+      ],
+      "forbiddenClaims": [
+        "정관격이라 공무원 합격",
+        "종격을 글자 수만으로 확정"
+      ],
+      "sourceIds": [
+        "ZP-USEFUL",
+        "SCH-LEE"
+      ],
+      "school": "자평진전 월령 격국 독법",
+      "status": "conditional-tradition",
+      "basis": "원전 요약을 바탕으로 한 프로젝트 해석 제한",
+      "requiresBirthTime": false,
+      "advice": "근거가 허용하는 점검 항목 하나를 정하고 일상에서 관찰한다.",
+      "missingPolicy": "필수 특징이 없거나 판정이 미정이면 적용하지 않고 제한사항을 반환",
+      "runtimeEnabled": false
+    },
+    {
+      "id": "K-USEFUL-01",
+      "version": "0.1.0-research",
+      "title": "용신의 정의를 먼저 고정",
+      "domains": [
+        "basic",
+        "year",
+        "decade"
+      ],
+      "requiredFeatures": [
+        "usefulGodReview",
+        "patternReview",
+        "strengthReview"
+      ],
+      "conditions": [
+        "격국/억부/조후 중 어떤 뜻인지 식별 가능"
+      ],
+      "exceptions": [
+        "학파마다 후보가 다름",
+        "다른 정의의 후보를 하나로 합산"
+      ],
+      "allowedInterpretation": [
+        "선택한 정의와 후보·미정 사유를 설명한다"
+      ],
+      "forbiddenClaims": [
+        "용신 한 글자는 모든 분야에서 영원히 길함",
+        "부족한 오행=용신"
+      ],
+      "sourceIds": [
+        "ZP-USEFUL",
+        "ZP-CLIMATE"
+      ],
+      "school": "월령 격국 / 억부 / 조후를 분리",
+      "status": "conditional-tradition",
+      "basis": "평주 혼입과 용어 다의성을 고려한 프로젝트 선택",
+      "requiresBirthTime": false,
+      "advice": "근거가 허용하는 점검 항목 하나를 정하고 일상에서 관찰한다.",
+      "missingPolicy": "필수 특징이 없거나 판정이 미정이면 적용하지 않고 제한사항을 반환",
+      "runtimeEnabled": false
+    },
+    {
+      "id": "K-USEFUL-02",
+      "version": "0.1.0-research",
+      "title": "조후는 격국 검토에 병행하는 전통 관점",
+      "domains": [
+        "basic",
+        "career"
+      ],
+      "requiredFeatures": [
+        "climateReview",
+        "monthSeason",
+        "usefulGodReview"
+      ],
+      "conditions": [
+        "한난조습 검토와 채택 기준이 있음"
+      ],
+      "exceptions": [
+        "다른 용신 정의와 상충",
+        "실제 출생지 날씨를 대입한 경우"
+      ],
+      "allowedInterpretation": [
+        "계절적 비유가 해석 조건을 바꾸는 경우를 설명한다"
+      ],
+      "forbiddenClaims": [
+        "한기가 있으니 질병이 온다",
+        "더운 나라로 이사하면 성공"
+      ],
+      "sourceIds": [
+        "ZP-CLIMATE"
+      ],
+      "school": "자평진전의 기후 참조; 독립 조후론 전체를 대표하지 않음",
+      "status": "conditional-tradition",
+      "basis": "원전 요약을 바탕으로 한 프로젝트 해석 제한",
+      "requiresBirthTime": false,
+      "advice": "근거가 허용하는 점검 항목 하나를 정하고 일상에서 관찰한다.",
+      "missingPolicy": "필수 특징이 없거나 판정이 미정이면 적용하지 않고 제한사항을 반환",
+      "runtimeEnabled": false
+    },
+    {
+      "id": "K-REL-01",
+      "version": "0.1.0-research",
+      "title": "천간합 검출과 합화 성립 분리",
+      "domains": [
+        "basic",
+        "love",
+        "compatibility"
+      ],
+      "requiredFeatures": [
+        "relations",
+        "transformationReview",
+        "monthSeason"
+      ],
+      "conditions": [
+        "합 후보의 두 간·위치와 합화 검토가 있음"
+      ],
+      "exceptions": [
+        "쟁합/간격/월령 조건 충돌",
+        "합만 있고 화 여부 미정"
+      ],
+      "allowedInterpretation": [
+        "관계의 결합 후보와 실제 작용 판정은 별개라고 설명한다"
+      ],
+      "forbiddenClaims": [
+        "합이 있으면 반드시 연애",
+        "갑기합이면 자동 토로 바뀜"
+      ],
+      "sourceIds": [
+        "SM-STEM-COMBINE",
+        "ZP-RELATIONS"
+      ],
+      "school": "자평명리·전체 원국 우선",
+      "status": "conditional-tradition",
+      "basis": "원전 요약을 바탕으로 한 프로젝트 해석 제한",
+      "requiresBirthTime": false,
+      "advice": "근거가 허용하는 점검 항목 하나를 정하고 일상에서 관찰한다.",
+      "missingPolicy": "필수 특징이 없거나 판정이 미정이면 적용하지 않고 제한사항을 반환",
+      "runtimeEnabled": false
+    },
+    {
+      "id": "K-REL-02",
+      "version": "0.1.0-research",
+      "title": "육합은 관계 후보이지 성공 보장 아님",
+      "domains": [
+        "basic",
+        "love",
+        "compatibility"
+      ],
+      "requiredFeatures": [
+        "relations",
+        "transformationReview"
+      ],
+      "conditions": [
+        "자축·인해·묘술·진유·사신·오미 중 검출 위치가 제공됨"
+      ],
+      "exceptions": [
+        "동시 충·다른 합",
+        "원국내 관계와 두 차트간 관계 혼용"
+      ],
+      "allowedInterpretation": [
+        "채택 방법에서 연결성 검토에 쓰는 표식으로 설명한다"
+      ],
+      "forbiddenClaims": [
+        "육합 상대가 운명의 배우자",
+        "합이 많으면 좋은 사람"
+      ],
+      "sourceIds": [
+        "SM-SIX-COMBINE",
+        "ZP-RELATIONS"
+      ],
+      "school": "자평명리·전체 원국 우선",
+      "status": "conditional-tradition",
+      "basis": "원전 요약을 바탕으로 한 프로젝트 해석 제한",
+      "requiresBirthTime": false,
+      "advice": "근거가 허용하는 점검 항목 하나를 정하고 일상에서 관찰한다.",
+      "missingPolicy": "필수 특징이 없거나 판정이 미정이면 적용하지 않고 제한사항을 반환",
+      "runtimeEnabled": false
+    },
+    {
+      "id": "K-REL-03",
+      "version": "0.1.0-research",
+      "title": "삼합·방합·반합 용어와 성립 조건 분리",
+      "domains": [
+        "basic",
+        "year",
+        "decade"
+      ],
+      "requiredFeatures": [
+        "relations",
+        "transformationReview",
+        "monthSeason"
+      ],
+      "conditions": [
+        "해당 삼합 세 글자 또는 방합/반합 정의가 표시됨"
+      ],
+      "exceptions": [
+        "세 글자 누락",
+        "삼합을 방합으로 표기",
+        "합화 조건 미충족"
+      ],
+      "allowedInterpretation": [
+        "후보/완성/미정 상태를 구분한다"
+      ],
+      "forbiddenClaims": [
+        "신자 두 글자로 완성 수국 확정",
+        "합 하나로 원국 전체 삭제"
+      ],
+      "sourceIds": [
+        "SM-THREE-COMBINE",
+        "ZP-RELATIONS"
+      ],
+      "school": "자평명리·전체 원국 우선",
+      "status": "conditional-tradition",
+      "basis": "삼명통회 삼합 기준과 자평진전 회/합 용어 차이를 함께 기록",
+      "requiresBirthTime": false,
+      "advice": "근거가 허용하는 점검 항목 하나를 정하고 일상에서 관찰한다.",
+      "missingPolicy": "필수 특징이 없거나 판정이 미정이면 적용하지 않고 제한사항을 반환",
+      "runtimeEnabled": false
+    },
+    {
+      "id": "K-REL-04",
+      "version": "0.1.0-research",
+      "title": "충은 작용 대상과 중재 조건부터 검토",
+      "domains": [
+        "basic",
+        "love",
+        "career",
+        "year",
+        "decade",
+        "compatibility"
+      ],
+      "requiredFeatures": [
+        "relations",
+        "patternReview"
+      ],
+      "conditions": [
+        "충의 양쪽 위치·관련 십성·기존 합이 제공됨"
+      ],
+      "exceptions": [
+        "다른 합회로 작용 달라짐",
+        "같은 충의 중복 표기"
+      ],
+      "allowedInterpretation": [
+        "충돌하는 요구/변화 가능성을 점검하는 전통적 비유만 허용"
+      ],
+      "forbiddenClaims": [
+        "일지충=이혼",
+        "월지충=퇴사",
+        "자오충=사고"
+      ],
+      "sourceIds": [
+        "ZP-RELATIONS"
+      ],
+      "school": "자평명리·전체 원국 우선",
+      "status": "conditional-tradition",
+      "basis": "원전 요약을 바탕으로 한 프로젝트 해석 제한",
+      "requiresBirthTime": false,
+      "advice": "근거가 허용하는 점검 항목 하나를 정하고 일상에서 관찰한다.",
+      "missingPolicy": "필수 특징이 없거나 판정이 미정이면 적용하지 않고 제한사항을 반환",
+      "runtimeEnabled": false
+    },
+    {
+      "id": "K-REL-05",
+      "version": "0.1.0-research",
+      "title": "형의 구성과 의미를 분리하고 보수적으로 적용",
+      "domains": [
+        "basic",
+        "love"
+      ],
+      "requiredFeatures": [
+        "relations",
+        "evidenceReview"
+      ],
+      "conditions": [
+        "채택 형 표와 전체 검토가 있음"
+      ],
+      "exceptions": [
+        "자형 성립/두 글자 형 인정 학파 차이",
+        "원전 자체도 형의 유래에 유보적"
+      ],
+      "allowedInterpretation": [
+        "검토할 전통적 관계 표식 정도로 제한한다"
+      ],
+      "forbiddenClaims": [
+        "삼형=감옥",
+        "자형=자해",
+        "성격 결함 확정"
+      ],
+      "sourceIds": [
+        "ZP-RELATIONS"
+      ],
+      "school": "형의 세부 조건 미확정; 의미 확장 금지",
+      "status": "conditional-tradition",
+      "basis": "원전 요약을 바탕으로 한 프로젝트 해석 제한",
+      "requiresBirthTime": false,
+      "advice": "근거가 허용하는 점검 항목 하나를 정하고 일상에서 관찰한다.",
+      "missingPolicy": "필수 특징이 없거나 판정이 미정이면 적용하지 않고 제한사항을 반환",
+      "runtimeEnabled": false
+    },
+    {
+      "id": "K-REL-06",
+      "version": "0.1.0-research",
+      "title": "해의 여섯 쌍은 기록, 인물·사건 단정은 차단",
+      "domains": [
+        "basic",
+        "love",
+        "compatibility"
+      ],
+      "requiredFeatures": [
+        "relations",
+        "evidenceReview"
+      ],
+      "conditions": [
+        "자미·축오·인사·묘진·신해·유술의 위치가 검출됨"
+      ],
+      "exceptions": [
+        "원전의 성별/신분 편견",
+        "원국 맥락 없이 해만 검출"
+      ],
+      "allowedInterpretation": [
+        "해라는 전통 분류의 존재와 해석 제한만 설명한다"
+      ],
+      "forbiddenClaims": [
+        "육해=친족 피해",
+        "상대가 배신한다",
+        "여성에게 더 나쁘다"
+      ],
+      "sourceIds": [
+        "SM-HARM"
+      ],
+      "school": "자평명리·전체 원국 우선",
+      "status": "conditional-tradition",
+      "basis": "원전 분류만 확인; 원전의 낙인·재난 서술은 채택하지 않음",
+      "requiresBirthTime": false,
+      "advice": "근거가 허용하는 점검 항목 하나를 정하고 일상에서 관찰한다.",
+      "missingPolicy": "필수 특징이 없거나 판정이 미정이면 적용하지 않고 제한사항을 반환",
+      "runtimeEnabled": false
+    },
+    {
+      "id": "K-REL-07",
+      "version": "0.1.0-research",
+      "title": "파의 해석은 추가 원전 조사까지 격리",
+      "domains": [
+        "basic",
+        "love"
+      ],
+      "requiredFeatures": [
+        "relations"
+      ],
+      "conditions": [
+        "파 후보가 제공됨"
+      ],
+      "exceptions": [
+        "현재 팩에서 독립 원전 장절과 성립 기준 대조 미완료"
+      ],
+      "allowedInterpretation": [
+        "판단 보류: 파의 구체 해석은 승인되지 않았음을 알린다"
+      ],
+      "forbiddenClaims": [
+        "파=파산/파혼",
+        "단일 파로 단계 하향"
+      ],
+      "sourceIds": [],
+      "school": "미선택",
+      "status": "quarantined",
+      "basis": "조사 공백 공개",
+      "requiresBirthTime": false,
+      "advice": "근거가 허용하는 점검 항목 하나를 정하고 일상에서 관찰한다.",
+      "missingPolicy": "필수 특징이 없거나 판정이 미정이면 적용하지 않고 제한사항을 반환",
+      "runtimeEnabled": false
+    },
+    {
+      "id": "K-GANYEO-01",
+      "version": "0.1.0-research",
+      "title": "간여지동 정의를 선택하지 않으면 적용 보류",
+      "domains": [
+        "basic",
+        "love"
+      ],
+      "requiredFeatures": [
+        "ganyeoDefinition",
+        "ganyeoCandidates"
+      ],
+      "conditions": [
+        "기둥/대표 오행/본기 기준 중 무엇을 비교하는지 명시됨"
+      ],
+      "exceptions": [
+        "현대 공개 자료의 10개/12개 목록·일주 한정 여부 충돌",
+        "대표 지지 음양과 본기 음양을 혼동"
+      ],
+      "allowedInterpretation": [
+        "용어 정의와 해당 구조 후보만 표시한다"
+      ],
+      "forbiddenClaims": [
+        "간여지동이면 고집이 세다",
+        "배우자복이 없다",
+        "모두 비견이다"
+      ],
+      "sourceIds": [
+        "WEB-GANYEO-12",
+        "WEB-GANYEO-10"
+      ],
+      "school": "현대 용어 정의 미합의",
+      "status": "quarantined",
+      "basis": "상업 자료 충돌 감사. 고전 직접 용례·현대 기명 저자 대조 전 성격 규칙 금지",
+      "requiresBirthTime": false,
+      "advice": "근거가 허용하는 점검 항목 하나를 정하고 일상에서 관찰한다.",
+      "missingPolicy": "필수 특징이 없거나 판정이 미정이면 적용하지 않고 제한사항을 반환",
+      "runtimeEnabled": false
+    },
+    {
+      "id": "K-GANYEO-02",
+      "version": "0.1.0-research",
+      "title": "같은 오행 기둥은 신강·혼인 운의 충분조건 아님",
+      "domains": [
+        "basic",
+        "love"
+      ],
+      "requiredFeatures": [
+        "ganyeoCandidates",
+        "strengthReview",
+        "monthSeason"
+      ],
+      "conditions": [
+        "같은 오행 후보와 전체 원국 검토가 별개로 있음"
+      ],
+      "exceptions": [
+        "계절·설기·극·시간 미상 때문에 강약 미정"
+      ],
+      "allowedInterpretation": [
+        "반복 구조 하나를 전체 인격/관계 결과로 확장할 수 없다고 설명한다"
+      ],
+      "forbiddenClaims": [
+        "간여지동=평생 독신",
+        "병오의 일지 본기는 항상 비견"
+      ],
+      "sourceIds": [
+        "ZP-STRENGTH"
+      ],
+      "school": "자평명리·전체 원국 우선",
+      "status": "conditional-tradition",
+      "basis": "전체 원국 원칙을 적용한 프로젝트 제한; 용어의 고전 출처를 주장하지 않음",
+      "requiresBirthTime": false,
+      "advice": "근거가 허용하는 점검 항목 하나를 정하고 일상에서 관찰한다.",
+      "missingPolicy": "필수 특징이 없거나 판정이 미정이면 적용하지 않고 제한사항을 반환",
+      "runtimeEnabled": false
+    },
+    {
+      "id": "K-STAR-01",
+      "version": "0.1.0-research",
+      "title": "신살은 보조 표식, 격국·생극을 대체하지 않음",
+      "domains": [
+        "basic",
+        "love",
+        "career"
+      ],
+      "requiredFeatures": [
+        "auxiliaryStars",
+        "patternReview"
+      ],
+      "conditions": [
+        "신살 계산표와 위치가 명시됨"
+      ],
+      "exceptions": [
+        "도화/고신/과숙 같은 이름만 있음",
+        "용신·원국 검토 없음"
+      ],
+      "allowedInterpretation": [
+        "채택 시에도 부가 설명으로만 제한한다"
+      ],
+      "forbiddenClaims": [
+        "도화=외도",
+        "고신=평생 고독",
+        "귀인=취업 보장"
+      ],
+      "sourceIds": [
+        "ZP-STARS"
+      ],
+      "school": "자평진전 격국 우선. 신살 중심 학파와 혼합 금지",
+      "status": "conditional-tradition",
+      "basis": "원전 요약을 바탕으로 한 프로젝트 해석 제한",
+      "requiresBirthTime": false,
+      "advice": "근거가 허용하는 점검 항목 하나를 정하고 일상에서 관찰한다.",
+      "missingPolicy": "필수 특징이 없거나 판정이 미정이면 적용하지 않고 제한사항을 반환",
+      "runtimeEnabled": false
+    },
+    {
+      "id": "K-LOVE-01",
+      "version": "0.1.0-research",
+      "title": "애정 분석의 관찰 위치와 전통의 한계",
+      "domains": [
+        "love"
+      ],
+      "requiredFeatures": [
+        "pillars",
+        "tenGods",
+        "relations",
+        "evidenceReview"
+      ],
+      "conditions": [
+        "일지 관계·표현/수용 관계의 근거가 승인됨"
+      ],
+      "exceptions": [
+        "전통 배우자성은 성별·가부장적 전제가 있음",
+        "성별·성적 지향 미수집"
+      ],
+      "allowedInterpretation": [
+        "원국 관계를 소통·거리 조율의 성찰 소재로 한정한다"
+      ],
+      "forbiddenClaims": [
+        "남자는 재성 여자는 관성을 자동 적용",
+        "배우자 외모·성별·혼인 횟수 단정"
+      ],
+      "sourceIds": [
+        "ZP-PALACES"
+      ],
+      "school": "자평명리·전체 원국 우선",
+      "status": "conditional-tradition",
+      "basis": "원전의 궁위·십성 구별을 참고한 현대 제품 재구성",
+      "requiresBirthTime": false,
+      "advice": "서로 필요한 개인 시간과 대화 방식을 합의한다.",
+      "missingPolicy": "필수 특징이 없거나 판정이 미정이면 적용하지 않고 제한사항을 반환",
+      "runtimeEnabled": false
+    },
+    {
+      "id": "K-LOVE-02",
+      "version": "0.1.0-research",
+      "title": "연애 시기 단정 대신 조건부 점검",
+      "domains": [
+        "love",
+        "year"
+      ],
+      "requiredFeatures": [
+        "annualPeriods",
+        "decadePeriods",
+        "natalLuckRelations",
+        "evidenceReview"
+      ],
+      "conditions": [
+        "선택 시기 데이터와 승인 근거가 있음"
+      ],
+      "exceptions": [
+        "대운/연도 경계 미정",
+        "관계 상태 미수집",
+        "기존 해석 충돌"
+      ],
+      "allowedInterpretation": [
+        "시기에 맞춰 소통/관계 돌봄을 점검하는 주제로만 설명한다"
+      ],
+      "forbiddenClaims": [
+        "몇 월에 운명의 상대와 만남",
+        "결혼/이별 확정"
+      ],
+      "sourceIds": [
+        "ZP-LUCK",
+        "SM-YEAR"
+      ],
+      "school": "자평명리·전체 원국 우선",
+      "status": "conditional-tradition",
+      "basis": "행운의 전통을 미래 사건 확정 대신 점검 주제로 제한",
+      "requiresBirthTime": false,
+      "advice": "근거가 허용하는 점검 항목 하나를 정하고 일상에서 관찰한다.",
+      "missingPolicy": "필수 특징이 없거나 판정이 미정이면 적용하지 않고 제한사항을 반환",
+      "runtimeEnabled": false
+    },
+    {
+      "id": "K-CAREER-01",
+      "version": "0.1.0-research",
+      "title": "관성은 일의 규칙·책임을 돌아보는 소재",
+      "domains": [
+        "career"
+      ],
+      "requiredFeatures": [
+        "tenGods",
+        "strengthReview",
+        "patternReview",
+        "evidenceReview"
+      ],
+      "conditions": [
+        "관성의 역할과 다른 관계가 검토됨"
+      ],
+      "exceptions": [
+        "관성 하나만 검출",
+        "과거 관직 체계를 현대 직업과 동일시"
+      ],
+      "allowedInterpretation": [
+        "역할·평가 기준·책임의 경계를 점검하는 제안"
+      ],
+      "forbiddenClaims": [
+        "정관 많음=공무원 합격",
+        "칠살=군인만 적성"
+      ],
+      "sourceIds": [
+        "ZP-OFFICER"
+      ],
+      "school": "자평명리·전체 원국 우선",
+      "status": "conditional-tradition",
+      "basis": "전통 관성 개념을 현대 자기점검으로 전환한 프로젝트 선택",
+      "requiresBirthTime": false,
+      "advice": "기대 역할과 완료 기준을 문장으로 합의한다.",
+      "missingPolicy": "필수 특징이 없거나 판정이 미정이면 적용하지 않고 제한사항을 반환",
+      "runtimeEnabled": false
+    },
+    {
+      "id": "K-CAREER-02",
+      "version": "0.1.0-research",
+      "title": "식상·인성은 산출과 학습의 균형 소재",
+      "domains": [
+        "career",
+        "basic"
+      ],
+      "requiredFeatures": [
+        "tenGods",
+        "strengthReview",
+        "patternReview",
+        "evidenceReview"
+      ],
+      "conditions": [
+        "식상/인성의 생설 관계와 전체 조건이 검토됨"
+      ],
+      "exceptions": [
+        "식신·상관을 같은 성격으로 치환",
+        "인성 개수만으로 지능 판단"
+      ],
+      "allowedInterpretation": [
+        "배운 것을 결과물로 옮기는 루틴을 점검한다"
+      ],
+      "forbiddenClaims": [
+        "식상=예술가 운명",
+        "인성=높은 IQ",
+        "상관=상사와 필연적 불화"
+      ],
+      "sourceIds": [
+        "ZP-RESOURCE",
+        "ZP-OUTPUT"
+      ],
+      "school": "자평명리·전체 원국 우선",
+      "status": "conditional-tradition",
+      "basis": "직업 예언이 아닌 프로젝트의 현대적 질문틀",
+      "requiresBirthTime": false,
+      "advice": "학습 시간과 작은 결과물 제출 시간을 함께 잡는다.",
+      "missingPolicy": "필수 특징이 없거나 판정이 미정이면 적용하지 않고 제한사항을 반환",
+      "runtimeEnabled": false
+    },
+    {
+      "id": "K-MONEY-01",
+      "version": "0.1.0-research",
+      "title": "재성은 실제 잔고/소득과 동일하지 않음",
+      "domains": [
+        "money",
+        "basic"
+      ],
+      "requiredFeatures": [
+        "tenGods",
+        "strengthReview",
+        "patternReview",
+        "evidenceReview"
+      ],
+      "conditions": [
+        "재성의 작용을 원국·월령 속에서 검토"
+      ],
+      "exceptions": [
+        "재성 부재/많음만 있음",
+        "현대 재산 규모 자료 없음"
+      ],
+      "allowedInterpretation": [
+        "돈·시간·자원을 관리하는 습관의 점검 소재"
+      ],
+      "forbiddenClaims": [
+        "재성 많음=부자",
+        "재성 없음=가난",
+        "특정 종목/시점 매수 권고"
+      ],
+      "sourceIds": [
+        "ZP-USEFUL",
+        "SCH-LEE"
+      ],
+      "school": "자평명리·전체 원국 우선",
+      "status": "conditional-tradition",
+      "basis": "원전의 부귀 지향을 현대 금융 예측으로 전용하지 않는 제한",
+      "requiresBirthTime": false,
+      "advice": "고정 지출과 변동 지출을 나눠 기록한다.",
+      "missingPolicy": "필수 특징이 없거나 판정이 미정이면 적용하지 않고 제한사항을 반환",
+      "runtimeEnabled": false
+    },
+    {
+      "id": "K-MONEY-02",
+      "version": "0.1.0-research",
+      "title": "식신생재는 조건 있는 전통 구성",
+      "domains": [
+        "money",
+        "career"
+      ],
+      "requiredFeatures": [
+        "tenGods",
+        "roots",
+        "strengthReview",
+        "patternReview"
+      ],
+      "conditions": [
+        "식신/재의 연결과 뿌리·신강 등 해당 원전 조건을 검토"
+      ],
+      "exceptions": [
+        "재의 뿌리/원국 작용 미검토",
+        "식상·인성의 반대 작용 존재"
+      ],
+      "allowedInterpretation": [
+        "전통에서 산출과 자원 연결을 보는 구성이라고 설명한다"
+      ],
+      "forbiddenClaims": [
+        "이 구성은 창업하면 반드시 부자",
+        "편재=복권 당첨"
+      ],
+      "sourceIds": [
+        "ZP-OUTPUT"
+      ],
+      "school": "자평명리·전체 원국 우선",
+      "status": "conditional-tradition",
+      "basis": "원전 요약을 바탕으로 한 프로젝트 해석 제한",
+      "requiresBirthTime": false,
+      "advice": "작은 결과물이 실제 수요와 연결되는지 비용을 정해 시험한다.",
+      "missingPolicy": "필수 특징이 없거나 판정이 미정이면 적용하지 않고 제한사항을 반환",
+      "runtimeEnabled": false
+    },
+    {
+      "id": "K-DECADE-01",
+      "version": "0.1.0-research",
+      "title": "대운의 순역·기산은 계산기에 맡김",
+      "domains": [
+        "decade",
+        "year"
+      ],
+      "requiredFeatures": [
+        "calendarPolicy",
+        "decadePolicy",
+        "decadePeriods",
+        "timeKnown"
+      ],
+      "conditions": [
+        "선택 관례와 계산 버전이 기록됨"
+      ],
+      "exceptions": [
+        "순역 기준 미선택",
+        "절입 시각·시각 미상으로 교운 범위 불명확",
+        "전통 성별 기준이 현재 입력과 호환되지 않음"
+      ],
+      "allowedInterpretation": [
+        "계산기가 제공한 구간과 불확실성만 설명한다"
+      ],
+      "forbiddenClaims": [
+        "AI가 생년으로 순역 추정",
+        "시간 미상에 정오 가정",
+        "샘플 구간을 실제 나이로 표시"
+      ],
+      "sourceIds": [
+        "SM-DECADE"
+      ],
+      "school": "삼명통회 대운 전통; 실제 서비스 관례 미확정",
+      "status": "conditional-tradition",
+      "basis": "원전 요약을 바탕으로 한 프로젝트 해석 제한",
+      "requiresBirthTime": false,
+      "advice": "근거가 허용하는 점검 항목 하나를 정하고 일상에서 관찰한다.",
+      "missingPolicy": "필수 특징이 없거나 판정이 미정이면 적용하지 않고 제한사항을 반환",
+      "runtimeEnabled": false
+    },
+    {
+      "id": "K-DECADE-02",
+      "version": "0.1.0-research",
+      "title": "대운은 원국과의 관계로 검토",
+      "domains": [
+        "decade",
+        "year"
+      ],
+      "requiredFeatures": [
+        "decadePeriods",
+        "natalLuckRelations",
+        "usefulGodReview",
+        "evidenceReview"
+      ],
+      "conditions": [
+        "구간 간지와 원국의 작용/반례가 제공됨"
+      ],
+      "exceptions": [
+        "좋은 오행이라는 이름만 있음",
+        "합충에 따라 같은 오행의 역할이 다름"
+      ],
+      "allowedInterpretation": [
+        "구간별로 강조되는 점검 주제와 상충 근거를 함께 제시"
+      ],
+      "forbiddenClaims": [
+        "목 대운은 모두 좋음",
+        "대운 10년간 모든 사건 확정"
+      ],
+      "sourceIds": [
+        "ZP-LUCK"
+      ],
+      "school": "자평명리·전체 원국 우선",
+      "status": "conditional-tradition",
+      "basis": "원전 요약을 바탕으로 한 프로젝트 해석 제한",
+      "requiresBirthTime": false,
+      "advice": "구간을 삶의 계획을 점검하는 주제로만 활용한다.",
+      "missingPolicy": "필수 특징이 없거나 판정이 미정이면 적용하지 않고 제한사항을 반환",
+      "runtimeEnabled": false
+    },
+    {
+      "id": "K-DECADE-03",
+      "version": "0.1.0-research",
+      "title": "교운 날짜를 사건 발생일로 취급하지 않음",
+      "domains": [
+        "decade"
+      ],
+      "requiredFeatures": [
+        "decadePolicy",
+        "decadePeriods",
+        "calendarPolicy"
+      ],
+      "conditions": [
+        "시작/끝 구간과 오차가 제공됨"
+      ],
+      "exceptions": [
+        "시간 미상",
+        "반올림·절기 경계·시각 보정 관례 차이"
+      ],
+      "allowedInterpretation": [
+        "교운은 채택 계산 관례의 경계임을 밝힌다"
+      ],
+      "forbiddenClaims": [
+        "교운 당일 운명 반전",
+        "교운 전후 반드시 사고"
+      ],
+      "sourceIds": [
+        "SM-DECADE"
+      ],
+      "school": "자평명리·전체 원국 우선",
+      "status": "conditional-tradition",
+      "basis": "계산 경계와 현실 사건을 구분하는 프로젝트 제한",
+      "requiresBirthTime": false,
+      "advice": "근거가 허용하는 점검 항목 하나를 정하고 일상에서 관찰한다.",
+      "missingPolicy": "필수 특징이 없거나 판정이 미정이면 적용하지 않고 제한사항을 반환",
+      "runtimeEnabled": false
+    },
+    {
+      "id": "K-YEAR-01",
+      "version": "0.1.0-research",
+      "title": "세운은 원국·대운과 함께 검토",
+      "domains": [
+        "year",
+        "decade"
+      ],
+      "requiredFeatures": [
+        "annualPeriods",
+        "decadePeriods",
+        "natalLuckRelations",
+        "evidenceReview"
+      ],
+      "conditions": [
+        "연도 경계·세운·대운이 검증된 계산 데이터로 제공됨"
+      ],
+      "exceptions": [
+        "실제 연도 대신 예시 fixture",
+        "경계 연도 정책 미정",
+        "대운 부재"
+      ],
+      "allowedInterpretation": [
+        "전통의 원국-대운-세운 층위를 구별해 주제를 설명한다"
+      ],
+      "forbiddenClaims": [
+        "띠만으로 올해 사건 확정",
+        "세운합=결혼 확정"
+      ],
+      "sourceIds": [
+        "SM-YEAR",
+        "SM-YEAR-DECADE"
+      ],
+      "school": "자평명리·전체 원국 우선",
+      "status": "conditional-tradition",
+      "basis": "원전 요약을 바탕으로 한 프로젝트 해석 제한",
+      "requiresBirthTime": false,
+      "advice": "연간 목표를 실행·점검 가능한 작은 과제로 나눈다.",
+      "missingPolicy": "필수 특징이 없거나 판정이 미정이면 적용하지 않고 제한사항을 반환",
+      "runtimeEnabled": false
+    },
+    {
+      "id": "K-MONTH-01",
+      "version": "0.1.0-research",
+      "title": "월운·분기 흐름은 계산 데이터 없으면 보류",
+      "domains": [
+        "year"
+      ],
+      "requiredFeatures": [
+        "monthlyPeriods",
+        "annualPeriods",
+        "natalLuckRelations",
+        "calendarPolicy"
+      ],
+      "conditions": [
+        "절기월 경계와 월간지가 제공됨"
+      ],
+      "exceptions": [
+        "양력 1월=인월 가정",
+        "연간 문구를 임의로 네 분기에 분배",
+        "현재 팩의 월운 세부 문헌 조사 미완료"
+      ],
+      "allowedInterpretation": [
+        "판단 보류 또는 가상 예시로만 분명히 표시한다"
+      ],
+      "forbiddenClaims": [
+        "연간 게이지를 12개월 점수로 변환",
+        "AI가 월운 간지를 생성"
+      ],
+      "sourceIds": [],
+      "school": "미선택",
+      "status": "quarantined",
+      "basis": "월운 규칙/집계 정책 조사 공백. 계산 경계 요구사항만 정의",
+      "requiresBirthTime": false,
+      "advice": "근거가 허용하는 점검 항목 하나를 정하고 일상에서 관찰한다.",
+      "missingPolicy": "필수 특징이 없거나 판정이 미정이면 적용하지 않고 제한사항을 반환",
+      "runtimeEnabled": false
+    },
+    {
+      "id": "K-COMPAT-01",
+      "version": "0.1.0-research",
+      "title": "두 차트를 합쳐 한 원국처럼 읽지 않음",
+      "domains": [
+        "compatibility"
+      ],
+      "requiredFeatures": [
+        "otherChart",
+        "crossRelations",
+        "consentConfirmed",
+        "timeKnown",
+        "otherTimeKnown",
+        "evidenceReview"
+      ],
+      "conditions": [
+        "동의 확인과 A/B의 계산/불확실성이 분리됨"
+      ],
+      "exceptions": [
+        "한쪽 시간 미상",
+        "두 차트의 합화 조건을 원국내 조건으로 혼동"
+      ],
+      "allowedInterpretation": [
+        "두 사람의 차이·공통점을 대화 소재로 제시한다"
+      ],
+      "forbiddenClaims": [
+        "궁합 90%=혼인 성공률",
+        "한 사람이 다른 사람 운을 망침"
+      ],
+      "sourceIds": [],
+      "school": "프로젝트 선택",
+      "status": "project-guardrail",
+      "basis": "개인정보 최소화·양자 불확실성·계산 경계",
+      "requiresBirthTime": false,
+      "advice": "결정 방식과 갈등 시 쉬는 시간을 서로 합의한다.",
+      "missingPolicy": "필수 특징이 없거나 판정이 미정이면 적용하지 않고 제한사항을 반환",
+      "runtimeEnabled": false
+    },
+    {
+      "id": "K-COMPAT-02",
+      "version": "0.1.0-research",
+      "title": "궁합의 단일 합충 점수는 승인 전 보류",
+      "domains": [
+        "compatibility"
+      ],
+      "requiredFeatures": [
+        "crossRelations",
+        "evidenceReview"
+      ],
+      "conditions": [
+        "후속 학파/원전/검증 기준을 채택한 경우에만 재검토"
+      ],
+      "exceptions": [
+        "현재 연구에 두 차트 비교의 승인된 가중 규칙 없음"
+      ],
+      "allowedInterpretation": [
+        "판단 보류: 관계 조율 조언과 계산 사실만 제시"
+      ],
+      "forbiddenClaims": [
+        "합 개수로 결혼 적합도 확정",
+        "특정 일주와는 만나지 말 것"
+      ],
+      "sourceIds": [],
+      "school": "미선택",
+      "status": "quarantined",
+      "basis": "궁합의 관계 수치/판정 기준은 별도 연구 과제",
+      "requiresBirthTime": false,
+      "advice": "근거가 허용하는 점검 항목 하나를 정하고 일상에서 관찰한다.",
+      "missingPolicy": "필수 특징이 없거나 판정이 미정이면 적용하지 않고 제한사항을 반환",
+      "runtimeEnabled": false
+    },
+    {
+      "id": "K-GUARD-01",
+      "version": "0.1.0-research",
+      "title": "시간 미상은 전체 결과에서 전파",
+      "domains": [
+        "basic",
+        "love",
+        "career",
+        "money",
+        "year",
+        "decade",
+        "compatibility"
+      ],
+      "requiredFeatures": [
+        "timeKnown",
+        "pillars"
+      ],
+      "conditions": [
+        "시주가 null이면 unknown을 유지"
+      ],
+      "exceptions": [
+        "세 기둥에서 같은 결론이 유지되는지 검토 미완료",
+        "시주 의존 규칙"
+      ],
+      "allowedInterpretation": [
+        "알려진 범위만 사용하고 누락 영향이 있는 항목을 보류한다"
+      ],
+      "forbiddenClaims": [
+        "시주를 자시로 채움",
+        "삼주 결과를 완전한 팔자라고 표시"
+      ],
+      "sourceIds": [],
+      "school": "프로젝트 선택",
+      "status": "project-guardrail",
+      "basis": "사용자 입력 계약·불확실성 보존",
+      "requiresBirthTime": false,
+      "advice": "근거가 허용하는 점검 항목 하나를 정하고 일상에서 관찰한다.",
+      "missingPolicy": "필수 특징이 없거나 판정이 미정이면 적용하지 않고 제한사항을 반환",
+      "runtimeEnabled": false
+    },
+    {
+      "id": "K-GUARD-02",
+      "version": "0.1.0-research",
+      "title": "게이지는 해석 규칙이나 예측 확률이 아님",
+      "domains": [
+        "basic",
+        "love",
+        "career",
+        "money",
+        "year",
+        "decade",
+        "compatibility"
+      ],
+      "requiredFeatures": [
+        "isSample",
+        "evidenceReview"
+      ],
+      "conditions": [
+        "개발용은 고정 fixture 단계 사용"
+      ],
+      "exceptions": [
+        "실제 산정 규칙·근거 미확정",
+        "근거 부재 또는 상충"
+      ],
+      "allowedInterpretation": [
+        "단계 의미·이유·제한을 함께 제시; 실제 판단 근거 없으면 판단 보류"
+      ],
+      "forbiddenClaims": [
+        "AI가 87점 창작",
+        "연애 성공률",
+        "규칙 하나로 자동 최고/최저 단계"
+      ],
+      "sourceIds": [],
+      "school": "프로젝트 선택",
+      "status": "project-guardrail",
+      "basis": "상품 게이지 계약; 실제 산정 기준 별도 결정",
+      "requiresBirthTime": false,
+      "advice": "근거가 허용하는 점검 항목 하나를 정하고 일상에서 관찰한다.",
+      "missingPolicy": "필수 특징이 없거나 판정이 미정이면 적용하지 않고 제한사항을 반환",
+      "runtimeEnabled": false
+    },
+    {
+      "id": "K-GUARD-03",
+      "version": "0.1.0-research",
+      "title": "동일 입력·근거의 설명 추적성",
+      "domains": [
+        "basic",
+        "love",
+        "career",
+        "money",
+        "year",
+        "decade",
+        "compatibility"
+      ],
+      "requiredFeatures": [
+        "evidenceReview",
+        "isSample"
+      ],
+      "conditions": [
+        "승인 근거 ID·버전·불확실성이 제공됨"
+      ],
+      "exceptions": [
+        "출처 없음",
+        "격리된 규칙만 있음",
+        "자유로운 문장 생성으로 새 단정 추가"
+      ],
+      "allowedInterpretation": [
+        "설명 단위마다 승인 근거 ID를 연결하고 불일치 시 거부한다"
+      ],
+      "forbiddenClaims": [
+        "출처 확인=예측 검증",
+        "구조 검사 통과=정확한 풀이"
+      ],
+      "sourceIds": [],
+      "school": "프로젝트 선택",
+      "status": "project-guardrail",
+      "basis": "근거 충실성·제품 샘플 구분",
+      "requiresBirthTime": false,
+      "advice": "근거가 허용하는 점검 항목 하나를 정하고 일상에서 관찰한다.",
+      "missingPolicy": "필수 특징이 없거나 판정이 미정이면 적용하지 않고 제한사항을 반환",
+      "runtimeEnabled": false
+    }
+  ]
+}

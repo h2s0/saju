@@ -1,0 +1,325 @@
+{
+  "version": "0.1.0-research",
+  "mode": "product-report-only",
+  "tasks": [
+    {
+      "productId": "basic",
+      "name": "종합",
+      "sections": [
+        "기질",
+        "관계",
+        "일",
+        "돈 관리",
+        "실천 요약"
+      ],
+      "requiredFeatures": [
+        "pillars",
+        "timeKnown",
+        "isSample",
+        "evidenceReview",
+        "dayMaster",
+        "monthSeason",
+        "tenGods",
+        "strengthReview"
+      ],
+      "optionalFeatures": [
+        "contextOptional"
+      ],
+      "ruleCandidates": [
+        "K-BASIS-01",
+        "K-BASIS-04",
+        "K-STRENGTH-01",
+        "K-PATTERN-01",
+        "K-GUARD-01"
+      ],
+      "steps": [
+        "계산된 특징의 존재·버전·불확실성을 확인한다",
+        "상품 범위와 맞는 조건부 규칙 후보만 찾는다",
+        "예외·반대 근거·학파 차이·시간 의존을 검토한다",
+        "승인된 근거 ID 안에서 제한된 설명을 작성한다",
+        "결정권을 사용자에게 두는 구체적 실천 하나를 제안한다"
+      ],
+      "taskNote": "전체 특징을 인격 판정으로 축약하지 않고 영역별 근거를 나눈다.",
+      "missingPolicy": "필수 자료가 없으면 관련 영역은 판단 보류. 다른 영역의 설명으로 빈칸을 숨기지 않는다.",
+      "excluded": [
+        "자유 질문/사용자 상담 생성",
+        "명식/간지/대운 재계산",
+        "진단·법률·투자 지시",
+        "실제 사건·성별·성적 지향·재산 추정",
+        "근거 없는 점수/성공 확률"
+      ],
+      "contextPolicy": "추가 맥락은 후속 실험 후보일 뿐 현재 UI에서 수집하지 않는다. 없으면 추정하지 않는다."
+    },
+    {
+      "productId": "love",
+      "name": "애정",
+      "sections": [
+        "관계 성향",
+        "감정 표현",
+        "소통",
+        "관계 유지",
+        "실천"
+      ],
+      "requiredFeatures": [
+        "pillars",
+        "timeKnown",
+        "isSample",
+        "evidenceReview",
+        "tenGods",
+        "relations",
+        "evidenceReview"
+      ],
+      "optionalFeatures": [
+        "contextOptional"
+      ],
+      "ruleCandidates": [
+        "K-LOVE-01",
+        "K-LOVE-02",
+        "K-REL-04",
+        "K-GANYEO-02"
+      ],
+      "steps": [
+        "계산된 특징의 존재·버전·불확실성을 확인한다",
+        "상품 범위와 맞는 조건부 규칙 후보만 찾는다",
+        "예외·반대 근거·학파 차이·시간 의존을 검토한다",
+        "승인된 근거 ID 안에서 제한된 설명을 작성한다",
+        "결정권을 사용자에게 두는 구체적 실천 하나를 제안한다"
+      ],
+      "taskNote": "배우자궁/배우자성은 전통의 관찰 위치일 뿐. 성별·지향·관계 상태를 추정하지 않는다.",
+      "missingPolicy": "필수 자료가 없으면 관련 영역은 판단 보류. 다른 영역의 설명으로 빈칸을 숨기지 않는다.",
+      "excluded": [
+        "자유 질문/사용자 상담 생성",
+        "명식/간지/대운 재계산",
+        "진단·법률·투자 지시",
+        "실제 사건·성별·성적 지향·재산 추정",
+        "근거 없는 점수/성공 확률"
+      ],
+      "contextPolicy": "추가 맥락은 후속 실험 후보일 뿐 현재 UI에서 수집하지 않는다. 없으면 추정하지 않는다."
+    },
+    {
+      "productId": "career",
+      "name": "직업",
+      "sections": [
+        "일하는 방식",
+        "강점",
+        "협업",
+        "업무 환경",
+        "진로 점검"
+      ],
+      "requiredFeatures": [
+        "pillars",
+        "timeKnown",
+        "isSample",
+        "evidenceReview",
+        "tenGods",
+        "strengthReview",
+        "patternReview"
+      ],
+      "optionalFeatures": [
+        "contextOptional"
+      ],
+      "ruleCandidates": [
+        "K-CAREER-01",
+        "K-CAREER-02",
+        "K-PATTERN-01"
+      ],
+      "steps": [
+        "계산된 특징의 존재·버전·불확실성을 확인한다",
+        "상품 범위와 맞는 조건부 규칙 후보만 찾는다",
+        "예외·반대 근거·학파 차이·시간 의존을 검토한다",
+        "승인된 근거 ID 안에서 제한된 설명을 작성한다",
+        "결정권을 사용자에게 두는 구체적 실천 하나를 제안한다"
+      ],
+      "taskNote": "직업명·합격·퇴사 시기를 예언하지 않고 역할·환경·실천을 점검한다.",
+      "missingPolicy": "필수 자료가 없으면 관련 영역은 판단 보류. 다른 영역의 설명으로 빈칸을 숨기지 않는다.",
+      "excluded": [
+        "자유 질문/사용자 상담 생성",
+        "명식/간지/대운 재계산",
+        "진단·법률·투자 지시",
+        "실제 사건·성별·성적 지향·재산 추정",
+        "근거 없는 점수/성공 확률"
+      ],
+      "contextPolicy": "추가 맥락은 후속 실험 후보일 뿐 현재 UI에서 수집하지 않는다. 없으면 추정하지 않는다."
+    },
+    {
+      "productId": "money",
+      "name": "재물",
+      "sections": [
+        "돈을 다루는 성향",
+        "소비",
+        "관리",
+        "주의할 습관",
+        "실천"
+      ],
+      "requiredFeatures": [
+        "pillars",
+        "timeKnown",
+        "isSample",
+        "evidenceReview",
+        "tenGods",
+        "strengthReview",
+        "patternReview"
+      ],
+      "optionalFeatures": [
+        "contextOptional"
+      ],
+      "ruleCandidates": [
+        "K-MONEY-01",
+        "K-MONEY-02",
+        "K-STRENGTH-04"
+      ],
+      "steps": [
+        "계산된 특징의 존재·버전·불확실성을 확인한다",
+        "상품 범위와 맞는 조건부 규칙 후보만 찾는다",
+        "예외·반대 근거·학파 차이·시간 의존을 검토한다",
+        "승인된 근거 ID 안에서 제한된 설명을 작성한다",
+        "결정권을 사용자에게 두는 구체적 실천 하나를 제안한다"
+      ],
+      "taskNote": "재성/식상 관계를 실제 재산 또는 투자 수익의 근거로 제시하지 않는다.",
+      "missingPolicy": "필수 자료가 없으면 관련 영역은 판단 보류. 다른 영역의 설명으로 빈칸을 숨기지 않는다.",
+      "excluded": [
+        "자유 질문/사용자 상담 생성",
+        "명식/간지/대운 재계산",
+        "진단·법률·투자 지시",
+        "실제 사건·성별·성적 지향·재산 추정",
+        "근거 없는 점수/성공 확률"
+      ],
+      "contextPolicy": "추가 맥락은 후속 실험 후보일 뿐 현재 UI에서 수집하지 않는다. 없으면 추정하지 않는다."
+    },
+    {
+      "productId": "year",
+      "name": "올해",
+      "sections": [
+        "연간 주제",
+        "분기별 흐름",
+        "영역별 점검",
+        "실천"
+      ],
+      "requiredFeatures": [
+        "pillars",
+        "timeKnown",
+        "isSample",
+        "evidenceReview",
+        "annualPeriods",
+        "decadePeriods",
+        "natalLuckRelations",
+        "calendarPolicy"
+      ],
+      "optionalFeatures": [
+        "contextOptional"
+      ],
+      "ruleCandidates": [
+        "K-YEAR-01",
+        "K-DECADE-02",
+        "K-MONTH-01"
+      ],
+      "steps": [
+        "계산된 특징의 존재·버전·불확실성을 확인한다",
+        "상품 범위와 맞는 조건부 규칙 후보만 찾는다",
+        "예외·반대 근거·학파 차이·시간 의존을 검토한다",
+        "승인된 근거 ID 안에서 제한된 설명을 작성한다",
+        "결정권을 사용자에게 두는 구체적 실천 하나를 제안한다"
+      ],
+      "taskNote": "월운 근거가 없으면 분기별 실운 설명은 판단 보류. 시제품의 가상 분기는 샘플 표기한다.",
+      "missingPolicy": "필수 자료가 없으면 관련 영역은 판단 보류. 다른 영역의 설명으로 빈칸을 숨기지 않는다.",
+      "excluded": [
+        "자유 질문/사용자 상담 생성",
+        "명식/간지/대운 재계산",
+        "진단·법률·투자 지시",
+        "실제 사건·성별·성적 지향·재산 추정",
+        "근거 없는 점수/성공 확률"
+      ],
+      "contextPolicy": "추가 맥락은 후속 실험 후보일 뿐 현재 UI에서 수집하지 않는다. 없으면 추정하지 않는다."
+    },
+    {
+      "productId": "decade",
+      "name": "대운",
+      "sections": [
+        "원국과 운의 관계",
+        "구간별 주제",
+        "전환기 점검"
+      ],
+      "requiredFeatures": [
+        "pillars",
+        "timeKnown",
+        "isSample",
+        "evidenceReview",
+        "decadePolicy",
+        "decadePeriods",
+        "natalLuckRelations",
+        "usefulGodReview"
+      ],
+      "optionalFeatures": [
+        "contextOptional"
+      ],
+      "ruleCandidates": [
+        "K-DECADE-01",
+        "K-DECADE-02",
+        "K-DECADE-03"
+      ],
+      "steps": [
+        "계산된 특징의 존재·버전·불확실성을 확인한다",
+        "상품 범위와 맞는 조건부 규칙 후보만 찾는다",
+        "예외·반대 근거·학파 차이·시간 의존을 검토한다",
+        "승인된 근거 ID 안에서 제한된 설명을 작성한다",
+        "결정권을 사용자에게 두는 구체적 실천 하나를 제안한다"
+      ],
+      "taskNote": "구간은 계산기 출력만 사용하고 미래 사건·정확한 발현일을 생성하지 않는다.",
+      "missingPolicy": "필수 자료가 없으면 관련 영역은 판단 보류. 다른 영역의 설명으로 빈칸을 숨기지 않는다.",
+      "excluded": [
+        "자유 질문/사용자 상담 생성",
+        "명식/간지/대운 재계산",
+        "진단·법률·투자 지시",
+        "실제 사건·성별·성적 지향·재산 추정",
+        "근거 없는 점수/성공 확률"
+      ],
+      "contextPolicy": "추가 맥락은 후속 실험 후보일 뿐 현재 UI에서 수집하지 않는다. 없으면 추정하지 않는다."
+    },
+    {
+      "productId": "compatibility",
+      "name": "궁합",
+      "sections": [
+        "두 사람의 성향",
+        "소통",
+        "공통점과 차이",
+        "갈등 조율",
+        "실천"
+      ],
+      "requiredFeatures": [
+        "pillars",
+        "timeKnown",
+        "isSample",
+        "evidenceReview",
+        "otherChart",
+        "otherTimeKnown",
+        "consentConfirmed",
+        "crossRelations"
+      ],
+      "optionalFeatures": [
+        "contextOptional"
+      ],
+      "ruleCandidates": [
+        "K-COMPAT-01",
+        "K-COMPAT-02",
+        "K-REL-02"
+      ],
+      "steps": [
+        "계산된 특징의 존재·버전·불확실성을 확인한다",
+        "상품 범위와 맞는 조건부 규칙 후보만 찾는다",
+        "예외·반대 근거·학파 차이·시간 의존을 검토한다",
+        "승인된 근거 ID 안에서 제한된 설명을 작성한다",
+        "결정권을 사용자에게 두는 구체적 실천 하나를 제안한다"
+      ],
+      "taskNote": "궁합 점수·우열·만남/이별 권유 없이 두 사람의 불확실성을 각각 명시한다.",
+      "missingPolicy": "필수 자료가 없으면 관련 영역은 판단 보류. 다른 영역의 설명으로 빈칸을 숨기지 않는다.",
+      "excluded": [
+        "자유 질문/사용자 상담 생성",
+        "명식/간지/대운 재계산",
+        "진단·법률·투자 지시",
+        "실제 사건·성별·성적 지향·재산 추정",
+        "근거 없는 점수/성공 확률"
+      ],
+      "contextPolicy": "추가 맥락은 후속 실험 후보일 뿐 현재 UI에서 수집하지 않는다. 없으면 추정하지 않는다."
+    }
+  ]
+}

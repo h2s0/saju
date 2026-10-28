@@ -1,0 +1,65 @@
+{
+  "version": "0.1.0-research",
+  "features": {
+    "pillars": "계산기가 반환한 년월일시 간지. 시주 미상은 null, 누락을 임의 보완하지 않음.",
+    "dayMaster": "일간과 음양·오행. 인격 그 자체가 아닌 계산 기준점.",
+    "timeKnown": "본인 시각의 known/unknown. null 시주를 자시로 보완 금지.",
+    "calendarPolicy": "계산기/버전, 절입/연도 경계, 시간대·자시 관례 식별자. 날짜 원문은 생성기에 전달하지 않음.",
+    "elementCounts": "겉글자 수와 지장간 포함 여부·가중 방식 표시. 점수/강약 아님.",
+    "yinYang": "계산기 기준 음양 분포 및 지지 음양과 본기 음양의 구분.",
+    "monthSeason": "절기 기준 월령·계절; 음력 월 숫자로 대체 불가.",
+    "hiddenStems": "채택 지장간 표와 본기/중기/여기, 버전. 사령 분일표와 혼동 금지.",
+    "tenGods": "일간 기준 십성, 천간/지지 본기/각 지장간의 기준과 위치.",
+    "roots": "일간/다른 간의 통근 위치·정도와 판정 학파/표.",
+    "revealed": "지장간이 천간에 드러났는지와 소속 위치.",
+    "strengthReview": "월령·뿌리·도움·설기·극·합충을 함께 검토한 상태와 반례, 미정 허용.",
+    "patternReview": "격 후보·성립 조건·손상/구응·학파와 보류 상태. 이름만 주지 않음.",
+    "usefulGodReview": "격국/억부/조후 정의를 명시한 후보·근거·대안·불확실성.",
+    "climateReview": "월령을 포함한 한난조습 전통 검토; 실제 기상·몸 상태 아님.",
+    "relations": "위치가 붙은 합충형파해 후보·관련 간지·중복/쟁합·전체 조건.",
+    "transformationReview": "합화 성립/불성립/미정과 월령·투간 등 채택 조건.",
+    "ganyeoDefinition": "대표 오행 비교/본기 십성 비교/특정 서비스 목록 중 선택과 출처. 미선택 허용.",
+    "ganyeoCandidates": "어느 기둥의 어떤 기준에서 검출했는지. 성격 점수 아님.",
+    "auxiliaryStars": "사용한 신살표·기준·검출 위치. 필수 입력 아님.",
+    "evidenceReview": "사람 또는 후속 규칙기가 승인한 근거 ID, 조건 검사 결과와 반례 기록.",
+    "decadePolicy": "순역의 기준·기산 절기·3일1년 환산/반올림·교운 기준·관례 버전. 성별 관례 미결이면 계산 보류.",
+    "decadePeriods": "계산기가 준 대운 간지·시작/끝 구간·불확실성. 샘플이면 가상 구간 표시.",
+    "annualPeriods": "선택 연도의 간지·시작/끝과 입춘 등 경계 정책; 서버가 정한 연도.",
+    "monthlyPeriods": "절기월별 간지·시작/끝과 구간 정책; 분기=고정 3개월 평균이 아님.",
+    "natalLuckRelations": "원국↔대운↔세운↔월운 관계를 명시한 계산 결과와 상충 근거.",
+    "otherChart": "상대 A/B의 분리된 최소 계산 특징. 원문·신원 없음.",
+    "otherTimeKnown": "상대의 시주 known/unknown. 본인 시각으로 대체 금지.",
+    "consentConfirmed": "궁합의 상대방 정보 입력 동의 확인 결과. 신원/연락처는 전달하지 않음.",
+    "crossRelations": "두 원국 사이 합충 등 검출 위치·채택 방법; 서로 다른 차트임을 유지.",
+    "contextOptional": "향후 선택적 생활 맥락 후보. 현재 UI 수집 없음, 없어도 불이익/추측 없음.",
+    "isSample": "개발용 fixture 여부. 연구 규칙이 연결돼도 실계산 인증이 아님."
+  },
+  "tenGodReference": [
+    {
+      "relation": "같은 오행",
+      "samePolarity": "비견",
+      "oppositePolarity": "겁재"
+    },
+    {
+      "relation": "일간이 생함",
+      "samePolarity": "식신",
+      "oppositePolarity": "상관"
+    },
+    {
+      "relation": "일간이 극함",
+      "samePolarity": "편재",
+      "oppositePolarity": "정재"
+    },
+    {
+      "relation": "일간을 극함",
+      "samePolarity": "편관/칠살",
+      "oppositePolarity": "정관"
+    },
+    {
+      "relation": "일간을 생함",
+      "samePolarity": "편인",
+      "oppositePolarity": "정인"
+    }
+  ],
+  "referenceScope": "관계명 정규화의 검토용 표. 계산 구현·지장간 표·사령 분일·합화 판정을 대신하지 않음. 원전+평주 대조 검증을 거쳐 엔진 테스트에 채택할 것."
+}
