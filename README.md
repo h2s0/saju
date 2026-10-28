@@ -33,6 +33,11 @@ npm run dev
 
 12. **서비스 출시 결정 목록:** [`docs/10-launch-decisions.md`](./docs/10-launch-decisions.md)
 
+13. **SEO 정책·Next.js 적용 명세:** [검색 노출 설계서](docs/13-seo-and-discovery.md)
+14. **도메인·검색 등록·검수 서식:** [SEO 출시 점검표](docs/14-seo-launch-checklist.md)
+
+현재 시제품은 전체 검색 제외(`noindex, nofollow`)다. SEO 문서 작성은 실제 검색 공개·콘솔 등록을 의미하지 않는다.
+
 개발 공통 기준: [ARCHITECTURE.md](./ARCHITECTURE.md)에서 파일 배치·의존 방향을, [COMMIT_CONVENTION.md](./COMMIT_CONVENTION.md)에서 한국어 Conventional Commits와 작은 목적 단위를 확인한다. 공식 문서·설치 버전 확인 절차는 [AGENTS.md](./AGENTS.md)를 따른다.
 
 디자인 기준은 [DESIGN.md](DESIGN.md)에 정리했다. 2026-10-28 선택한 써라운드 에어 제목·Pretendard 본문과 커비 포털을 참고한 둥근 카드·별·구름은 **로컬 화면에 적용했다**. 서체 파일은 자체 호스팅하며 공식 출처·버전·라이선스는 [서체 안내](src/styles/fonts/README.md)에 보관한다. 화면별 적용과 후속 검수는 [디자인 가이드](docs/03-ui-design-system.md)를 따른다.
@@ -71,6 +76,8 @@ saju/
    ├─ 10-launch-decisions.md
    ├─ 11-local-prototype.md
    ├─ 12-reading-prompt-contract.md
+   ├─ 13-seo-and-discovery.md
+   ├─ 14-seo-launch-checklist.md
    └─ reading-knowledge/  # 상품별 분석 규칙·출처·프롬프트·검증 사례
 ```
 

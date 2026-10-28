@@ -161,3 +161,7 @@ DB는 애플리케이션 서버를 통해 접근하는 방식을 기본으로 �
 - [Supabase Queues](https://supabase.com/docs/guides/queues): PostgreSQL 기반 영속 큐. 실제 작업 실행과 비즈니스 멱등성은 애플리케이션 책임이다.
 
 서비스 출시 결정 목록은 [10. 출시 결정사항](10-launch-decisions.md)에 통합한다.
+
+## SEO 구현 경계
+
+검색 노출·환경별 기본값·공개 경로·canonical·Metadata API·robots·사이트맵의 단일 기준은 [SEO 설계서](13-seo-and-discovery.md)다. 현재 루트 전체 noindex는 유지하며 관련 구현은 아직 없다. 운영 도메인·배포·공개 상품 확정 후 App Router 공식 규약에 맞춰 구현한다. 실행 기록은 [출시 점검표](14-seo-launch-checklist.md)에 남긴다.

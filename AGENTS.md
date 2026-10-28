@@ -8,7 +8,8 @@
 2. `docs/00-product-brief.md`
 3. [ARCHITECTURE.md](ARCHITECTURE.md)와 [COMMIT_CONVENTION.md](COMMIT_CONVENTION.md)
 4. UI/디자인 작업은 루트 [DESIGN.md](DESIGN.md), 이후 변경 대상과 관련된 문서 (`docs/01-...` ~ `docs/12-...`)
-5. **캐릭터 생성·화면에 운몽이 사용 시** `docs/04-character-bible.md`와 그 문서가 지정한 원본·누끼·3면도 참조 이미지 및 검수 상태
+5. **SEO·공유 메타데이터·검색 공개 작업은** [검색 노출 설계서](docs/13-seo-and-discovery.md)와 [출시 점검표](docs/14-seo-launch-checklist.md)
+6. **캐릭터 생성·화면에 운몽이 사용 시** `docs/04-character-bible.md`와 그 문서가 지정한 원본·누끼·3면도 참조 이미지 및 검수 상태
 
 ## 2. 제품 불변 조건
 
@@ -34,6 +35,7 @@
 | 커밋 형식·단위·검증 기록 | [COMMIT_CONVENTION.md](COMMIT_CONVENTION.md) |
 | API, DB, 인증 | `docs/07-technical-architecture.md` |
 | 테스트, 이벤트 | `docs/08-analytics-and-qa.md` |
+| SEO·공개 URL·canonical·검색 등록 | `docs/13-seo-and-discovery.md`, 실행 기록은 `docs/14-seo-launch-checklist.md` |
 
 변경 시 연관된 문서도 같이 업데이트한다. 문서와 코드가 충돌하면 임의로 정책을 확정하지 말고 결정사항을 `docs/09-competitor-research-and-decisions.md`에 기록한다.
 
@@ -86,6 +88,15 @@ Next.js 작업은 공식 라우팅 파일 규약을 지키고 Server Component�
 ### 5.3 로컬 시제품 경계
 
 현재 범위는 [시제품 안내](docs/11-local-prototype.md)의 7개 상품 체험·반원 게이지를 따른다. 상품 ID·목차·가격안은 `src/features/products/catalog.ts`가 실행 기준이다. 올해/대운은 예시 기간이며 궁합은 두 입력·동의와 각자의 시간 미상을 구분한다. 게이지는 확률·점수가 아니고 AI가 임의로 생성하지 않는다. 성별을 수집하지 않고 출생정보 원문을 저장·전송하지 않는다. 계산·AI·구매는 개발용 fixture/모의 처리이며 세션 상태를 실제 구매 권한으로 재사용하지 않는다. 검수 대기 캐릭터 사본은 로컬 디자인 확인에만 사용한다. 후속 생성 작업은 [프롬프트 계약](docs/12-reading-prompt-contract.md)과 [명리 지식 자료](docs/reading-knowledge/)를 먼저 읽는다. 자료의 출처 확인과 예측 타당성을 구분하며 조사 규칙을 자동으로 운영 근거로 승격하지 않는다.
+
+### 5.4 SEO·검색 공개 규칙
+
+- 작업 전 [검색 노출 설계서](docs/13-seo-and-discovery.md)와 [출시 점검표](docs/14-seo-launch-checklist.md)를 읽고 해당 변경의 Next.js·검색엔진 공식 문서를 확인한다. 현재 전체 `noindex, nofollow`는 의도된 시제품 설정이다. 명시적인 출시·검색 공개 작업 없이 해제하지 않는다.
+- 운영에서 검수된 공개 페이지 허용 목록만 검색 대상으로 삼는다. 미리보기·설정 누락 환경은 검색 제외다. 개인 입력·처리·결과·결제·보관함은 noindex·사이트맵 제외를 유지하고, 실제 데이터는 서버 인증·인가로 보호한다. robots.txt와 noindex를 접근 제어로 취급하지 않는다.
+- 제목·설명·OG·canonical·구조화 데이터·사이트맵에 출생정보·개인 결과·구매 내역·토큰을 넣지 않는다. 대표 도메인은 신뢰할 배포 설정에서 가져오고 공개 정상 대표 URL만 사이트맵에 싣는다.
+- App Router Metadata API와 공식 메타데이터 파일 규약을 사용한다. Server Component 경계, 중첩 메타데이터 대체 규칙, 캐시·빌드·로봇별 실제 출력을 확인한다. 클라이언트에서 noindex를 뒤집지 않는다.
+- AI 풀이·날짜 조합을 검색용 페이지로 대량 발행하거나 허위 가격·리뷰·적중률을 마크업하지 않는다. 공개 콘텐츠·캐릭터 에셋은 검수 상태를 확인한다.
+- 최종 HTML·HTTP 헤더·canonical·robots·사이트맵·오류 상태와 비공개 환경을 검사한다. 외부 검색 도구에는 승인된 공개 URL만 제출한다. 문서 완료·구현 검사·검색 등록·실제 색인 관측을 구분해 기록한다.
 
 ## 6. 완료 정의 (DoD)
 

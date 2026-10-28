@@ -177,3 +177,15 @@
 결정과 이유: 외부 CDN 요청 없이 공식 WOFF2를 자체 호스팅한다. 모든 한글 파일의 선행 로드를 피하고 로딩 중에는 시스템 서체를 표시한다. 원본 5개 WOFF2는 합계 3,459,956바이트이며 버전·해시·라이선스는 [서체 안내](../src/styles/fonts/README.md)에 기록했다. 패키지는 추가하지 않았다.
 정정: ADR-027의 Air 400 매핑은 파일 도입 전 설계였다. 실제 공식 목록의 `fontWeight: 300`과 Light face 확인에 따라 설정과 DESIGN.md를 300으로 맞췄다. 가짜 볼드는 사용하지 않는다.
 검증: 실제 검사 결과와 환경 한계는 [시제품 안내](11-local-prototype.md)에 기록한다. 운영 성능 예산·실제 iOS/Android와 화면읽기 검수는 미완료다.
+
+## ADR-029 · 공개 소개와 개인 풀이의 검색 노출 분리 (2026-10-28)
+
+상태: 공식 자료 조사·프로젝트 정책 문서화 / 코드 구현·검색 등록 전. [SEO 설계서](13-seo-and-discovery.md)를 정책의 단일 기준으로, [출시 점검표](14-seo-launch-checklist.md)를 검수·등록 기록 서식으로 정한다. 현재 루트 전체 `noindex, nofollow`는 유지한다.
+
+기술 / 적용 버전: Next.js 16.4.3 App Router; Google Search Central·네이버 Search Advisor·Bing Webmaster Tools 공개 가이드(서비스 버전 미표기).
+공식 근거: [Next.js Metadata API](https://nextjs.org/docs/app/getting-started/metadata-and-og-images), [Google noindex](https://developers.google.com/search/docs/crawling-indexing/block-indexing), [Google 사이트맵](https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap), [네이버 검색 제외](https://searchadvisor.naver.com/guide/faq-serpremove), [Bing 가이드라인](https://www.bing.com/webmasters/help/bing-webmaster-guidelines-30fba23a). 설치된 Next.js 번들 문서도 대조했다.
+확인일: 2026-10-28.
+분류: Metadata API·파일 규약은 공식 API 제약. 크롤링·색인·canonical의 의미는 공식 검색 가이드. 기본 제외·공개 허용 목록·개인 결과 비노출·구현 배치는 프로젝트 선택이다.
+결정과 이유: 검수한 운영 홈·실제 출시 상품 소개만 검색 후보로 삼고, 개인 입력·처리·결제·결과·보관함은 제외한다. 검색 지시와 서버 접근 통제를 분리해 개인 풀이가 검색용 공개 자료로 전환되지 않게 한다. 대표 도메인·공개 스위치·배포 환경을 명시적으로 검증하는 후속 설정을 제안한다. AI 풀이 대량 발행·허위 가격/리뷰 마크업은 사용하지 않는다.
+영향·대안: 전체 사이트 색인 허용은 개인 경로·시제품까지 포함할 위험이 있어 채택하지 않는다. robots.txt만으로 검색 제외를 해결하지 않는다. 새 패키지·콘솔 계정·DNS·배포 설정은 이번 범위에 포함하지 않는다.
+검증: 공식 자료·현재 레이아웃·라우트·설치 버전을 확인했다. Bing 도움말은 공식 도메인 검색 추출 본문으로 확인했다. 내부 링크·문서 정합성 검사 결과는 커밋에 기록한다. 앱 SEO 동작·실제 검색 등록·색인·운영 성능은 미검증이다.
