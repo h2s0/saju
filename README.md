@@ -1,6 +1,6 @@
 # 천명록 (天命錄) — Product Documentation
 
-홈 → 출생 입력 → 무료 샘플 → 모의 구매 → 다섯 영역 상세 결과 → 보관함을 체험할 수 있다. 오늘 운세도 고정 샘플이다. 실행 방법과 한계는 [로컬 시제품 안내](docs/11-local-prototype.md), 후속 생성 계약은 [풀이 프롬프트 계약](docs/12-reading-prompt-contract.md)을 따른다.
+종합·애정·직업·재물·올해·대운·궁합 7개 상품을 각각 선택해 소개 → 입력 → 무료 미리보기 → 0원 모의 구매 → 상품별 다섯 영역 상세 결과 → 보관함을 체험한다. 결과 상단의 반원 게이지는 다섯 해석 방향을 보여주는 고정 샘플이며 점수·성공 확률이 아니다. 올해는 2026년 예시, 대운은 가상 구간 A·B·C로 실제 나이·연운·대운표를 계산하지 않는다. 오늘 운세도 고정 샘플이다. 실행 방법과 한계는 [로컬 시제품 안내](docs/11-local-prototype.md), 후속 생성 계약은 [풀이 프롬프트 계약](docs/12-reading-prompt-contract.md)을 따른다.
 
 ```sh
 npm ci
@@ -9,7 +9,9 @@ npm run dev
 
 기본 주소는 `http://127.0.0.1:3000`이다. 검사는 `npm run lint`, `npm run typecheck`, `npm test`, `npm run build`로 실행한다. E2E는 Chromium 설치 후 빌드된 앱에서 `npm run test:e2e`로 실행한다. Node.js 24.22.1 / npm 11.19.1 환경에서 검증했다.
 
-> **Status:** 로컬 시제품 · 2026-10-27 · 실제 사주 계산·AI·로그인·결제 미연결
+명리 개념·상품별 분석 기준·출처·후속 프롬프트는 [풀이 지식 팩](docs/reading-knowledge/README.md)에 정리했다. 구조 검사는 `python3 scripts/check-reading-knowledge.py`로 실행하며, 실제 계산·예측 정확도 검사가 아니다.
+
+> **Status:** 로컬 시제품 · 2026-10-28 · 실제 사주 계산·AI·로그인·결제 미연결
 >
 > **Product:** 모바일 전용 웹앱으로 제공하는 캐릭터 기반 사주 풀이 서비스
 >
@@ -66,7 +68,8 @@ saju/
    ├─ 09-competitor-research-and-decisions.md
    ├─ 10-launch-decisions.md
    ├─ 11-local-prototype.md
-   └─ 12-reading-prompt-contract.md
+   ├─ 12-reading-prompt-contract.md
+   └─ reading-knowledge/  # 상품별 분석 규칙·출처·프롬프트·검증 사례
 ```
 
 ## 사실·제안 구분

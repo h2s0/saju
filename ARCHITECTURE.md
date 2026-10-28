@@ -1,6 +1,6 @@
 # 천명록 아키텍처
 
-상태: 로컬 시제품 구현 기준 / 2026-10-27. Next.js App Router + TypeScript를 사용한다. 설치 버전은 package-lock.json과 ADR-023을 따른다. DB·인증·PG·큐·배포 공급자는 [기술 설계](docs/07-technical-architecture.md)의 후속 추천/미결정 상태다.
+상태: 로컬 시제품 구현 기준 / 2026-10-28. Next.js App Router + TypeScript를 사용한다. 설치 버전은 package-lock.json과 ADR-023을 따른다. DB·인증·PG·큐·배포 공급자는 [기술 설계](docs/07-technical-architecture.md)의 후속 추천/미결정 상태다.
 
 ## 1. 문서 역할과 설계 방향
 
@@ -55,7 +55,7 @@ Next.js의 `page.tsx`, `layout.tsx`, `route.ts`, `loading.tsx`, `error.tsx` 등 
 
 ### 현재 로컬 시제품
 
-`BirthForm` → 입력 검증 → `calculateSample` → 샘플 ID만 세션에 기록 → 처리 타이머 → `generateSampleReading`의 무료/상세 fixture를 표시한다. `features/demo/session-store.ts`가 샘플 방문·모의 구매 상태를 소유한다. checkout/library는 이 명시된 공개 진입점과 `features/reading/contracts.ts`만 참조한다. `reading-prompt.ts`는 후속 생성 입력·출력 검증 경계이며 외부 API를 호출하지 않는다.
+`features/products/catalog.ts`의 7개 상품 선택 → `/products/[product]` → `BirthForm` → 입력 검증 → `calculateSample` → 상품·시간 유무를 구분한 샘플 ID만 세션에 기록 → 처리 타이머 → `generateSampleReading`의 상품별 무료/상세 fixture와 `FlowGauge`를 표시한다. 궁합은 두 입력과 상대방 정보 입력 동의를 확인하고 각각의 시간 불확실성을 보존한다. `features/demo/session-store.ts`가 샘플 방문·모의 구매 상태를 소유한다. checkout/library는 세션·결과의 명시된 공개 진입점과 상품 카탈로그를 참조하며 구매 상태를 상품별로 구분한다. `reading-prompt.ts`는 후속 생성 입력·출력 검증 경계이며 외부 API를 호출하지 않는다.
 
 현재 샘플은 공개 클라이언트 번들에 포함된다. 화면의 모의 구매 검사는 실제 인증·인가가 아니며 세션 값을 실제 권한의 근거로 재사용하지 않는다. 원시 출생 입력은 컴포넌트 안에서 검증 후 버리고 서버에 전송하지 않는다. 서버 도메인·외부 연동·작업 폴더는 필요하지 않아 아직 생성하지 않았다. 실제 연동 때 아래 서버 흐름으로 교체해야 한다.
 

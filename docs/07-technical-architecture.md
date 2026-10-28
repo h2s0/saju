@@ -1,6 +1,6 @@
 # 07. 기술 설계 초안 (개발 에이전트용)
 
-> **현재 로컬 구현:** Next.js App Router + TypeScript, CSS Modules/CSS 변수, Vitest, Playwright를 사용한다. 계산·설명·구매는 클라이언트의 공개 샘플이며 실제 API·DB·AI·PG·로그인은 없다. 아래 객체·API·백엔드 추천안은 후속 연동 설계다. 현재 계약과 교체 경계는 [풀이 프롬프트 계약](12-reading-prompt-contract.md), 실행·저장 한계는 [시제품 안내](11-local-prototype.md)를 따른다.
+> **현재 로컬 구현:** Next.js App Router + TypeScript, CSS Modules/CSS 변수, Vitest, Playwright를 사용한다. 7개 상품의 계산·설명·게이지·구매는 클라이언트의 공개 샘플이며 실제 API·DB·AI·PG·로그인은 없다. 아래 객체·API·백엔드 추천안은 후속 연동 설계다. 현재 계약과 교체 경계는 [풀이 프롬프트 계약](12-reading-prompt-contract.md), 실행·저장 한계는 [시제품 안내](11-local-prototype.md)를 따른다.
 
 > **Next.js 사용은 사용자 확정(2026-10-27).** App Router + TypeScript는 시제품에 구현했으며 아래 백엔드 구성은 후속 추천안이다. PG·DB 서비스·로그인 수단·호스팅은 아직 계약/선택되지 않았다.
 
