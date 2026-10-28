@@ -114,3 +114,23 @@ describe("mock session actions", () => {
     expect(store.resetDemo()).toBe(false);
   });
 });
+
+describe('product-aware session compatibility', () => {
+  it('keeps legacy basic purchases alongside independent product and pair variants', () => {
+    const state = parseDemoSession(JSON.stringify({
+      visited: ['sample-known', 'sample-love-known', 'sample-career-unknown', 'sample-compatibility-unknown-known'],
+      purchased: ['sample-known', 'sample-love-known', 'sample-compatibility-unknown-known'],
+      birthDate: '1992-08-17', partner: { birthDate: '1996-11-23' },
+    }));
+    expect(state.purchased).toEqual(['sample-known', 'sample-love-known', 'sample-compatibility-unknown-known']);
+    expect(serializeDemoSession(state)).not.toContain('1992');
+    expect(serializeDemoSession(state)).not.toContain('1996');
+  });
+
+  it('rejects incomplete pair IDs and a purchase without a matching visit', () => {
+    expect(parseDemoSession(JSON.stringify({
+      visited: ['sample-compatibility-known', 'sample-love-known'],
+      purchased: ['sample-compatibility-known-known', 'sample-love-known', 'sample-career-known'],
+    }))).toEqual({ visited: ['sample-love-known'], purchased: ['sample-love-known'] });
+  });
+});

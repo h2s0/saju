@@ -1,3 +1,6 @@
+import { getProduct, type ProductId } from "../products/catalog";
+import { getSampleIdentity } from "./contracts";
+import { PRODUCT_SAMPLE_CONTENT } from "./product-sample-content";
 import { validateGeneratedSections } from "./reading-prompt";
 import { validateBirthInput } from "./birth-validation";
 import type {
@@ -35,7 +38,18 @@ export function calculateSample(input: BirthInput): CalculationResult {
   return sampleCalculation(input.time.kind === "known");
 }
 
-function evidenceFixtures(): InterpretationEvidence[] {
+function evidenceFixtures(productId: ProductId = "basic"): InterpretationEvidence[] {
+  if (productId !== "basic") {
+    return PRODUCT_SAMPLE_CONTENT[productId].chapters.map((chapter, index) => ({
+      id: `sample-${productId}-${getProduct(productId).sectionIds[index]}`,
+      allowedInterpretation: chapter.rule,
+      condition: "개발용 상품 샘플에서만 사용하는 편집 문구 예시",
+      exception: "실제 명식이나 운의 해석 근거로 사용하지 않음",
+      source: "development-fixture",
+      version: "sample-evidence-v2",
+      requiresBirthTime: false,
+    }));
+  }
   return [
     ["sample-care", "신중함을 장점으로 살리되 완벽함을 기다리지 않는 작은 시도를 제안한다."],
     ["sample-listen", "관계에서는 상대의 의도를 추측하기보다 직접 묻고 경청하는 방법을 제안한다."],
@@ -53,7 +67,16 @@ function evidenceFixtures(): InterpretationEvidence[] {
   }));
 }
 
-function sectionFixtures(): ReadingSection[] {
+function sectionFixtures(productId: ProductId = "basic"): ReadingSection[] {
+  if (productId !== "basic") {
+    const product = getProduct(productId);
+    return PRODUCT_SAMPLE_CONTENT[productId].chapters.map((chapter, index) => ({
+      id: product.sectionIds[index],
+      title: product.sectionTitles[index],
+      paragraphs: [...chapter.paragraphs],
+      evidenceIds: [`sample-${productId}-${product.sectionIds[index]}`],
+    }));
+  }
   return [
     {
       id: "temperament",
@@ -107,11 +130,13 @@ function sectionFixtures(): ReadingSection[] {
 export function generateSampleDetails(
   calculation: CalculationResult,
   evidence: InterpretationEvidence[],
+  productId: ProductId = "basic",
 ): ReadingSection[] {
   const result = validateGeneratedSections(
-    { sections: sectionFixtures() },
+    { sections: sectionFixtures(productId) },
     calculation,
     evidence,
+    productId,
   );
   if (!result.valid) {
     throw new Error("샘플 설명에 필요한 해석 근거가 없거나 사용할 수 없어요.");
@@ -120,8 +145,11 @@ export function generateSampleDetails(
 }
 
 export function generateSampleReading(id: SampleId): ReadingResult {
-  const evidence = evidenceFixtures();
-  const calculation = sampleCalculation(id === "sample-known");
+  const identity = getSampleIdentity(id);
+  const product = getProduct(identity.productId);
+  const content = identity.productId === "basic" ? null : PRODUCT_SAMPLE_CONTENT[identity.productId];
+  const evidence = evidenceFixtures(identity.productId);
+  const calculation = sampleCalculation(identity.timeKnown);
   const previewByRule: Record<string, string> = {
     "sample-care": "작은 마음의 움직임도 천천히 살펴보는 시간을 가져 봐요. 이 개발용 예시에서는 신중함을 살리면서도 작은 시도를 시작하는 방법을 소개해요. 입력하신 생년월일에서 알아낸 성향은 아니에요.",
     "sample-listen": "관계에서는 상대의 뜻을 혼자 추측하기보다 다정하게 물어보는 연습을 해 봐요. 나의 생각도 구체적인 말로 전하면 서로를 이해하는 데 도움이 될 수 있어요.",
@@ -129,13 +157,27 @@ export function generateSampleReading(id: SampleId): ReadingResult {
   return {
     id,
     isSample: true,
+    productId: identity.productId,
+    gauge: content ? { ...content.gauge } : {
+      level: 3,
+      summary: "나의 기준을 준비하고 작게 시작하는 예시예요.",
+      reason: "생활을 돌아보는 구성에 맞춘 고정 샘플 단계예요. 입력에서 운세나 성공률을 계산한 값이 아니에요.",
+    },
+    limitations: [
+      "입력과 무관한 개발용 샘플이에요. 실제 명식 계산·AI 해석이 아니에요.",
+      ...calculation.uncertainties,
+      ...(identity.partnerTimeKnown === false ? ["상대방은 시간 모름으로 시주와 상대의 시간에 의존한 설명을 제외했어요."] : []),
+      ...(product.periodLabel ? [product.periodLabel] : []),
+    ],
+    ...(product.periodLabel ? { periodLabel: product.periodLabel } : {}),
+    ...(typeof identity.partnerTimeKnown === "boolean" ? { partnerCalculation: sampleCalculation(identity.partnerTimeKnown) } : {}),
     calculation,
-    freeParagraphs: evidence.flatMap((item) =>
+    freeParagraphs: content ? [...content.freeParagraphs] : evidence.flatMap((item) =>
       previewByRule[item.id] ? [previewByRule[item.id]] : [],
     ),
-    advice: "오늘 하고 싶은 일 하나를 적고, 시작할 수 있는 가장 작은 행동을 골라 보세요.",
-    sections: generateSampleDetails(calculation, evidence),
+    advice: content?.advice ?? "오늘 하고 싶은 일 하나를 적고, 시작할 수 있는 가장 작은 행동을 골라 보세요.",
+    sections: generateSampleDetails(calculation, evidence, identity.productId),
     evidence,
-    generationVersion: "sample-reading-v1",
+    generationVersion: "sample-reading-v2",
   };
 }
