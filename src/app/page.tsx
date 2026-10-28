@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import s from './home.module.css';
 import ui from '@/components/ui.module.css';
+import { ProductCards } from '@/features/products/product-cards';
 export default function Home() {
  return <>
   <section className={s.hero}>
@@ -19,7 +20,8 @@ export default function Home() {
   </section>
   <section className={s.section} aria-labelledby="records-title">
    <div className={s.sectionHeading}><div><p className={ui.eyebrow}>YOUR DESTINY RECORD</p><h2 id="records-title">천계에서 도착한 기록</h2></div><span aria-hidden="true">✧</span></div>
-   <Link href="/reading/new" className={s.product}><span className={s.book} aria-hidden="true">命</span><div><span className={s.tag}>나를 알아가는 다섯 가지 이야기</span><h3>내 운명록 · 종합 사주</h3><p>기질부터 관계, 일과 생활의 작은 힌트까지</p><strong>990원 <small>상품 가격안 · 체험 청구 0원</small></strong></div><span aria-hidden="true" className={s.arrow}>↗</span></Link>
+   <p className={ui.description}>지금 궁금한 이야기를 골라보세요.<br/>일곱 가지 운명록 모두 샘플로 체험할 수 있어요.</p>
+   <ProductCards/>
    <Link href="/today" className={s.today}><span aria-hidden="true">☀</span><div><h3>오늘은 어떤 마음으로?</h3><p>오늘의 작은 응원 한 줄</p></div><span className={ui.badge}>무료</span></Link>
   </section>
   <section className={s.steps}><p className={ui.eyebrow}>HOW IT WORKS</p><h2>운명록은 이렇게 펼쳐져요</h2><ol><li><b>01</b><div><strong>나의 정보 알려주기</strong><p>태어난 시간을 몰라도 괜찮아요.</p></div></li><li><b>02</b><div><strong>무료 이야기 먼저 읽기</strong><p>부담 없이 첫 장을 만나보세요.</p></div></li><li><b>03</b><div><strong>궁금하다면 더 펼쳐보기</strong><p>체험한 기록은 보관함에서 다시 읽어요.</p></div></li></ol></section>

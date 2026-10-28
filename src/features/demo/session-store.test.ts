@@ -50,6 +50,15 @@ async function browserStore(initial?: string) {
 }
 
 describe("mock session actions", () => {
+  it("reuses a purchased product across time variants without adding another purchase", async () => {
+    const { store, values } = await browserStore();
+    store.rememberSample("sample-love-known");
+    store.rememberSample("sample-love-unknown");
+    expect(store.purchaseSample("sample-love-known")).toBe(true);
+    expect(store.purchasedSampleForProduct(["sample-love-known"], "love")).toBe("sample-love-known");
+    expect(store.purchaseSample("sample-love-unknown")).toBe(false);
+    expect(JSON.parse(values.get(store.DEMO_SESSION_KEY)!).purchased).toEqual(["sample-love-known"]);
+  });
   it("requires a visited sample and deduplicates repeat purchases", async () => {
     const { store, values } = await browserStore();
     expect(store.purchaseSample("sample-known")).toBe(false);

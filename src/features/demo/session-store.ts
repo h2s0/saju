@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useSyncExternalStore } from "react";
-import { isSampleId, type SampleId } from "../reading/contracts";
+import { getSampleIdentity, isSampleId, type ProductId, type SampleId } from "../reading/contracts";
 
 export const DEMO_SESSION_KEY = "cheonmyeongrok-demo-v1";
 
@@ -9,6 +9,10 @@ export type DemoSessionData = {
   visited: SampleId[];
   purchased: SampleId[];
 };
+
+export function purchasedSampleForProduct(purchased: readonly SampleId[], productId: ProductId): SampleId | undefined {
+  return purchased.find((id) => getSampleIdentity(id).productId === productId);
+}
 
 type DemoSessionSnapshot = DemoSessionData & {
   ready: boolean;
@@ -139,6 +143,8 @@ export function purchaseSample(id: SampleId): boolean {
   initialize();
   const data = current ?? emptySession();
   if (!data.visited.includes(id)) return false;
+  const existing = purchasedSampleForProduct(data.purchased, getSampleIdentity(id).productId);
+  if (existing) return existing === id;
   persist({ visited: data.visited, purchased: [...data.purchased, id] });
   return true;
 }
